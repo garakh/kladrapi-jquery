@@ -3,6 +3,22 @@
     <head>
         <title>Kladr jQuery example</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="/jquery-1.9.1.min.js" type="text/javascript"></script>
+        <script src="/jquery.kladr.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $.kladrapi({
+                cityId: '2900000100000',
+                query: 'Ури',
+                withParent: true,
+                contentType: 'street',
+                limit: 5
+            }, function(data){
+                var objs = data.result;
+                for(var i in objs){
+                    console.log(objs[i].name);
+                }
+            });
+        </script>
     </head>
     <body>
     </body>
