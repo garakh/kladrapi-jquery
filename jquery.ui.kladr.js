@@ -8,4 +8,10 @@
             }
         );
     }
+
+    $.widget("primepix.kladr", $.ui.autocomplete, {
+        options: {},
+        _create: function() {}
+    });
 })(jQuery);
+

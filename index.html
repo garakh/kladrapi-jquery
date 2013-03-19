@@ -11,11 +11,11 @@
                 query: 'Ури',
                 withParent: true,
                 contentType: 'street',
-                limit: 5
+                limit: 20
             }, function(data){
                 var objs = data.result;
                 for(var i in objs){
-                    console.log(objs[i].name);
+                    console.log(objs[i].id + ', ' + objs[i].name);
                 }
             });
         </script>
