@@ -21,6 +21,7 @@
 
         $.widget("primepix.kladr", $.ui.autocomplete, {
                 options: {
+                        key: null,
                         type: $.ui.kladrObjectType.REGION,
                         parentType: $.ui.kladrObjectType.REGION,
                         parentId: null,
@@ -73,6 +74,8 @@
                 },
 
                 _dataUpdate: function( name, callback ){
+                        if(!this.options.key) return;
+
                         name = this._key( $.trim( name ).toLowerCase() );
                         if(!name) return;
 
@@ -90,6 +93,8 @@
                         var kladrObjectType = $.ui.kladrObjectType;
 
                         var query = {};
+                        query.key = this.options.key;
+
                         if(this.options.parentId){
                                 var parent = (this.options.parentType ? this.options.parentType : kladrObjectType.REGION)+'Id';
                                 query[parent] = this.options.parentId;
