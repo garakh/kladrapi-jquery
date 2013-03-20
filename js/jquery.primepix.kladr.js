@@ -1,10 +1,10 @@
 (function($){
-        $.kladrapi = function(options, callback){
+        $.kladrapi = function( options, callback ){
                 var kladrapi = 'http://kladr-api.ru/api.php';
                 $.getJSON(kladrapi + "?callback=?",
                         options,
-                        function(data) {
-                                callback && callback(data);
+                        function( data ) {
+                                callback && callback( data );
                         }
                 );
         }
@@ -33,7 +33,7 @@
                 labelFormat: null,
                 valueFormat: null,
 
-                _key: function(val){
+                _key: function( val ){
                         var s1 = "qazwsxedcrfvtgbyhnujmik,ol.p;[']- ";
                         var s2 = "йфяцычувскамепинртгоьшлбщдюзжхэъ- ";
 
@@ -46,23 +46,23 @@
                         for( var i=0; i<val.length; i++ ){
                                 ch = val[i];
 
-                                if(s2.indexOf(ch) > -1){
+                                if(s2.indexOf( ch ) > -1){
                                         strNew += ch;
                                         continue;
                                 }
 
-                                if(s22.indexOf(ch) > -1){
+                                if(s22.indexOf( ch ) > -1){
                                         strNew += ch;
                                         continue;
                                 }
 
-                                index = s1.indexOf(ch);
+                                index = s1.indexOf( ch );
                                 if(index > -1){
                                         strNew += s2[index];
                                         continue;
                                 }
 
-                                index = s12.indexOf(ch);
+                                index = s12.indexOf( ch );
                                 if(index > -1){
                                         strNew += s22[index];
                                         continue;
@@ -72,8 +72,8 @@
                         return strNew;
                 },
 
-                _dataUpdate: function(name, callback){
-                        name = this._key($.trim(name).toLowerCase());
+                _dataUpdate: function( name, callback ){
+                        name = this._key( $.trim( name ).toLowerCase() );
                         if(!name) return;
 
                         var length = name.length;
@@ -103,7 +103,7 @@
                         query.limit = limit;
 
                         var that =this;
-                        $.kladrapi(query, function(data){
+                        $.kladrapi( query, function( data ){
                                 var objects = data.result;
                                 var source = [];
                                 for(var i in objects){
@@ -131,14 +131,14 @@
                 },
 
                 _create: function() {
-                        $.ui.autocomplete.prototype._create.call(this);
+                        $.ui.autocomplete.prototype._create.call( this );
 
                         var that = this;
 
                         if(this.options.label){
                                 this.labelFormat = this.options.label;
                         } else {
-                                this.labelFormat = function(obj){
+                                this.labelFormat = function( obj ){
                                         return obj.typeShort + '. ' + obj.name;
                                 }
                         }
@@ -146,31 +146,31 @@
                         if(this.options.value){
                                 this.valueFormat = this.options.value;
                         } else {
-                                this.valueFormat = function(obj){
+                                this.valueFormat = function( obj ){
                                         return obj.name;
                                 }
                         }
 
                         this.source = function( request, response ) {
-                                that._dataUpdate(request.term);
+                                that._dataUpdate( request.term );
                                 response( $.ui.autocomplete.filter( that.objects, request.term ) );
                         };
 
                         $.ui.autocomplete.escapeRegex = function( value ) {
-                                var val = value.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, "\\$&");
-                                return that._key(val).toLowerCase();;
+                                var val = value.replace( /[\-\[\]{}()*+?.,\\\^$|#\s]/g, "\\$&" );
+                                return that._key( val ).toLowerCase();
                         };
 
-                        $.ui.autocomplete.filter = function(array, term) {
+                        $.ui.autocomplete.filter = function( array, term ) {
                                 var matcher = new RegExp( '^'+$.ui.autocomplete.escapeRegex(term), "i" );
-                                return $.grep( array, function(value) {
+                                return $.grep( array, function( value ) {
                                         return matcher.test( value.value );
                                 });
                         };
                 },
 
                 destroy: function() {
-                        $.ui.autocomplete.prototype.destroy.call(this);
+                        $.ui.autocomplete.prototype.destroy.call( this );
                 },
         });
 })(jQuery);
