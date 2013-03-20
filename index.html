@@ -3,8 +3,13 @@
     <head>
         <title>Kladr jQuery example</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        <link href="/css/ui-lightness/jquery-ui-1.10.2.custom.css" rel="stylesheet">
+
         <script src="/js/jquery-1.9.1.min.js" type="text/javascript"></script>
-        <script src="/js/jquery.kladr.js" type="text/javascript"></script>
+        <script src="/js/jquery-ui-1.10.2.custom.js" type="text/javascript"></script>
+        <script src="/js/jquery.primepix.kladr.js" type="text/javascript"></script>
+
         <script type="text/javascript">
             $.kladrapi({
                 cityId: '2900000100000',
@@ -17,6 +22,36 @@
                 for(var i in objs){
                     console.log(objs[i].id + ', ' + objs[i].name);
                 }
+            });
+
+            $(function() {
+		var availableTags = [
+			"ActionScript",
+			"AppleScript",
+			"Asp",
+			"BASIC",
+			"C",
+			"C++",
+			"Clojure",
+			"COBOL",
+			"ColdFusion",
+			"Erlang",
+			"Fortran",
+			"Groovy",
+			"Haskell",
+			"Java",
+			"JavaScript",
+			"Lisp",
+			"Perl",
+			"PHP",
+			"Python",
+			"Ruby",
+			"Scala",
+			"Scheme"
+		];
+		$( "#city" ).autocomplete({
+			source: availableTags
+		});
             });
         </script>
     </head>
