@@ -24,11 +24,15 @@
                         type: $.ui.kladrObjectType.REGION,
                         parentType: $.ui.kladrObjectType.REGION,
                         parentId: null,
-                        search: '',
-                        limit: 10
+                        limit: 10,
+                        label: null,
+                        value: null,
                 },
 
                 objects: [],
+
+                labelFormat: null,
+                valueFormat: null,
 
                 _key: function(val){
                         var s1 = "qazwsxedcrfvtgbyhnujmik,ol.p;[']- ";
@@ -84,6 +88,8 @@
                                 case 5: limit = 800; break;
                         }
 
+                        var kladrObjectType = $.ui.kladrObjectType;
+
                         var query = {};
                         if(this.options.parentId){
                                 var parent = (this.options.parentType ? this.options.parentType : kladrObjectType.REGION)+'Id';
@@ -102,7 +108,8 @@
                                 var objects = data.result;
                                 var source = [];
                                 for(var i in objects){
-                                       var value = objects[i].name;
+                                       var label = that.labelFormat(objects[i]);
+                                       var value = that.valueFormat(objects[i]);
 
                                        var exist = false;
                                        for(var j in source){
@@ -113,9 +120,9 @@
                                        }
 
                                        if(exist) continue;
-                                       
+
                                        source.push({
-                                            label: value,
+                                            label: label,
                                             value: value,
                                        });
                                 }
@@ -126,25 +133,40 @@
 
                 _create: function() {
                         $.ui.autocomplete.prototype._create.call(this);
-                        var kladrObjectType = $.ui.kladrObjectType;
-
-                        var query = {};
-                        if(this.options.parentId){
-                                var parent = (this.options.parentType ? this.options.parentType : kladrObjectType.REGION)+'Id';
-                                query[parent] = this.options.parentId;
-                        }
-
-                        var type = this.options.type ? this.options.type : kladrObjectType.REGION;
-                        query.contentType = type;
-
-                        if(this.options.limit){
-                                query.limit = this.options.limit;
-                        }
 
                         var that = this;
+
+                        if(this.options.label){
+                                this.labelFormat = this.options.label;
+                        } else {
+                                this.labelFormat = function(obj){
+                                        return obj.typeShort + '. ' + obj.name;
+                                }
+                        }
+
+                        if(this.options.value){
+                                this.valueFormat = this.options.value;
+                        } else {
+                                this.valueFormat = function(obj){
+                                        return obj.name;
+                                }
+                        }
+
                         this.source = function( request, response ) {
                                 that._dataUpdate(request.term);
                                 response( $.ui.autocomplete.filter( that.objects, request.term ) );
+                        };
+
+                        $.ui.autocomplete.escapeRegex = function( value ) {
+                                var val = value.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, "\\$&");
+                                return that._key(val).toLowerCase();;
+                        };
+
+                        $.ui.autocomplete.filter = function(array, term) {
+                                var matcher = new RegExp( '^'+$.ui.autocomplete.escapeRegex(term), "i" );
+                                return $.grep( array, function(value) {
+                                        return matcher.test( value.value );
+                                });
                         };
                 },
 
