@@ -24,7 +24,6 @@
                         type: $.ui.kladrObjectType.REGION,
                         parentType: $.ui.kladrObjectType.REGION,
                         parentId: null,
-                        limit: 10,
                         label: null,
                         value: null,
                 },
