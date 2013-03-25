@@ -107,7 +107,7 @@
 
                         query.limit = limit;
 
-                        var that =this;
+                        var that = this;
                         $.kladrapi( query, function( data ){
                                 var objects = data.result;
                                 var source = [];
