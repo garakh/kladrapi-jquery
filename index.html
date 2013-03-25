@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Kladr jQuery example</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        <link href="/css/ui-lightness/jquery-ui-1.10.2.custom.css" rel="stylesheet">
+
+        <script src="/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+        <script src="/js/jquery-ui-1.10.2.custom.js" type="text/javascript"></script>
+        <script src="/js/jquery.primepix.kladr.js" type="text/javascript"></script>
+
+        <script type="text/javascript">
+            $(function() {
+		$( "#city" ).kladr({
+                    key: '234kjhkwejf234hjqhkrekw',
+                    type: $.ui.kladrObjectType.CITY
+		});
+            });
+        </script>
+    </head>
+    <body>
+        <input id="city" name="city" type="text" value="">
+    </body>
+</html>
