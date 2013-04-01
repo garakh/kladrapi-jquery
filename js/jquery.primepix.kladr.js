@@ -128,6 +128,7 @@
                                        source.push({
                                             label: label,
                                             value: value,
+                                            obj: objects[i],
                                        });
                                 }
                                 that.objects = source;

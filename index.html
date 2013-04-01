@@ -14,7 +14,10 @@
             $(function() {
 		$( "#city" ).kladr({
                     key: '234kjhkwejf234hjqhkrekw',
-                    type: $.ui.kladrObjectType.CITY
+                    type: $.ui.kladrObjectType.CITY,
+                    select: function( event, ui ) {
+                        alert(ui.item.obj.id);
+                    }
 		});
             });
         </script>
