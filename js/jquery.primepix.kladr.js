@@ -35,8 +35,8 @@
                 valueFormat: null,
 
                 _key: function( val ){
-                        var s1 = "qazwsxedcrfvtgbyhnujmik,ol.p;[']- ";
-                        var s2 = "йфяцычувскамепинртгоьшлбщдюзжхэъ- ";
+                        var s1 = "1234567890qazwsxedcrfvtgbyhnujmik,ol.p;[']- ";
+                        var s2 = "1234567890йфяцычувскамепинртгоьшлбщдюзжхэъ- ";
 
                         var s12 = "QAZWSXEDCRFVTGBYHNUJMIK<OL>P:{\"} ";
                         var s22 = "ЙФЯЦЫЧУВСКАМЕПИНРТГОЬШЛБЩДЮЗЖХЭЪ ";
