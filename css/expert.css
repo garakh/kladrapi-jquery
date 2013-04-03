@@ -903,6 +903,9 @@ a.regbtn {
 .ui-autocomplete {
     background: #ffffff;
     border: 1px solid #B1B1B1;
+    overflow-y: auto;
+    max-height: 400px;
+    max-width: 490px;
 }
     .ui-autocomplete li {
         font-size: 13px;
