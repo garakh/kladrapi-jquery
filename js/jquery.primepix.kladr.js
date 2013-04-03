@@ -25,6 +25,7 @@
                         type: $.ui.kladrObjectType.REGION,
                         parentType: $.ui.kladrObjectType.REGION,
                         parentId: null,
+                        minLength: 0,
                         label: function( obj ){
                                 return obj.typeShort + '. ' + obj.name;
                         },
@@ -81,15 +82,15 @@
                 },
 
                 _dataUpdate: function( name, callback ){
-                        if(!this.options.key) return;
+                        if( !this.options.key ) return;
 
                         name = this._key( $.trim( name ).toLowerCase() );
-                        if(!name) return;
+                        if( !name ) return;
 
                         var length = name.length;
                         var limit = 1000;
 
-                        switch(length){
+                        switch( length ){
                                 case 1: limit = 50; break;
                                 case 2: limit = 100; break;
                                 case 3: limit = 200; break;
@@ -102,8 +103,8 @@
                         var query = {};
                         query.key = this.options.key;
 
-                        if(this.options.parentId){
-                                var parent = (this.options.parentType ? this.options.parentType : kladrObjectType.REGION)+'Id';
+                        if( this.options.parentId ){
+                                var parent = ( this.options.parentType ? this.options.parentType : kladrObjectType.REGION )+'Id';
                                 query[parent] = this.options.parentId;
                         }
 
@@ -118,19 +119,19 @@
                         $.kladrapi( query, function( data ){
                                 var objects = data.result;
                                 var source = [];
-                                for(var i in objects){
-                                       var label = that.options.label(objects[i]);
-                                       var value = that.options.value(objects[i]);
+                                for( var i in objects ){
+                                       var label = that.options.label( objects[i] );
+                                       var value = that.options.value( objects[i] );
 
                                        var exist = false;
-                                       for(var j in source){
-                                                if(source[j].value == value){
+                                       for( var j in source ){
+                                                if( source[j].value == value ){
                                                         exist = true;
                                                         break;
                                                 }
                                        }
 
-                                       if(exist) continue;
+                                       if( exist ) continue;
 
                                        source.push({
                                             label: label,
