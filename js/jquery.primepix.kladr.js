@@ -25,14 +25,21 @@
                         type: $.ui.kladrObjectType.REGION,
                         parentType: $.ui.kladrObjectType.REGION,
                         parentId: null,
-                        label: null,
-                        value: null,
+                        label: function( obj ){
+                                return obj.typeShort + '. ' + obj.name;
+                        },
+                        value: function( obj ){
+                                return obj.name;
+                        },
+                        filter: function( array, term ) {
+                                var matcher = new RegExp( '^'+$.ui.autocomplete.escapeRegex(term), "i" );
+                                return $.grep( array, function( value ) {
+                                        return matcher.test( value.value );
+                                });
+                        }
                 },
 
                 objects: [],
-
-                labelFormat: null,
-                valueFormat: null,
 
                 _key: function( val ){
                         var s1 = "1234567890qazwsxedcrfvtgbyhnujmik,ol.p;[']- ";
@@ -112,8 +119,8 @@
                                 var objects = data.result;
                                 var source = [];
                                 for(var i in objects){
-                                       var label = that.labelFormat(objects[i]);
-                                       var value = that.valueFormat(objects[i]);
+                                       var label = that.options.label(objects[i]);
+                                       var value = that.options.value(objects[i]);
 
                                        var exist = false;
                                        for(var j in source){
@@ -140,22 +147,7 @@
                         $.ui.autocomplete.prototype._create.call( this );
 
                         var that = this;
-
-                        if(this.options.label){
-                                this.labelFormat = this.options.label;
-                        } else {
-                                this.labelFormat = function( obj ){
-                                        return obj.typeShort + '. ' + obj.name;
-                                }
-                        }
-
-                        if(this.options.value){
-                                this.valueFormat = this.options.value;
-                        } else {
-                                this.valueFormat = function( obj ){
-                                        return obj.name;
-                                }
-                        }
+                        $.ui.autocomplete.filter = this.options.filter;
 
                         this.source = function( request, response ) {
                                 that._dataUpdate( request.term );
@@ -166,13 +158,6 @@
                                 var val = value.replace( /[\-\[\]{}()*+?.,\\\^$|#\s]/g, "\\$&" );
                                 return that._key( val ).toLowerCase();
                         };
-
-                        $.ui.autocomplete.filter = function( array, term ) {
-                                var matcher = new RegExp( '^'+$.ui.autocomplete.escapeRegex(term), "i" );
-                                return $.grep( array, function( value ) {
-                                        return matcher.test( value.value );
-                                });
-                        };
                 },
 
                 destroy: function() {
@@ -180,4 +165,3 @@
                 },
         });
 })(jQuery);
-
