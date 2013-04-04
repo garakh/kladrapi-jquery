@@ -25,5 +25,14 @@ Primepix КЛАДР – виджет jQuery UI для автодополнени
 
 *select* = function( event, ui ){} – функция вызываемая при событии выбора пользователем значения для автодополнения, в поле ui.item.obj – передаётся выбранный пользователем объект КЛАДР
 
+Перечисление $.ui.kladrObjectType
+---------------------------------
+
+*$.ui.kladrObjectType.REGION*  -  область, регион
+*$.ui.kladrObjectType.DISTRICT*  -  район
+*$.ui.kladrObjectType.CITY*  -  населённый пункт
+*$.ui.kladrObjectType.STREET*  -  улица
+*$.ui.kladrObjectType.BUILDING* -  дом, строение
+
 
 [1]: http://kladr-api.ru/        "КЛАДР API"
