@@ -32,6 +32,7 @@ Primepix КЛАДР – виджет jQuery UI для автодополнени
 Формат объекта КЛАДР
 --------------------
 
+`````javascript
 {
 	*id*: "2900000100000", *// Код объекта*
 	*name*: "Архангельск", *// Название объекта*
@@ -48,6 +49,7 @@ Primepix КЛАДР – виджет jQuery UI для автодополнени
 		}
 	]
 }
+`````
 
 
 Служебная функция $.kladrapi
@@ -82,19 +84,19 @@ $( "input" ).kladr({
 
 Автодополнение городами из Архангельской области (код КЛАДР 2900000000000)
 
-<code>
+`````javascript
 $( "input" ).kladr({
 	key: 'demo',
 	type: $.ui.kladrObjectType.CITY,
 	parentType: $.ui.kladrObjectType.REGION,
 	parentId: "2900000000000"
 });
-</code>
+`````
 
 
 Автодополнение городами России, со сменой подписи при выборе города
 
-<code>
+`````javascript
 $( "input" ).kladr({
 	key: 'demo',
 	type: $.ui.kladrObjectType.CITY,
@@ -103,7 +105,7 @@ $( "input" ).kladr({
 		$( "label" ).text( ui.item.obj.type );
 	}
 });
-</code>
+`````
 
 Более подробные примеры можно посмотреть в файлах example1.html и example2.html
 
