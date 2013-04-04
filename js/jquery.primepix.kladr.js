@@ -25,18 +25,27 @@
                         type: $.ui.kladrObjectType.REGION,
                         parentType: $.ui.kladrObjectType.REGION,
                         parentId: null,
-                        label: null,
-                        value: null,
+                        withParents: false,
+                        minLength: 0,
+                        label: function( obj, query ){
+                                return obj.typeShort + '. ' + obj.name;
+                        },
+                        value: function( obj, query ){
+                                return obj.name;
+                        },
+                        filter: function( array, term ) {
+                                var matcher = new RegExp( '^'+$.ui.autocomplete.escapeRegex(term), "i" );
+                                return $.grep( array, function( value ) {
+                                        return matcher.test( value.name );
+                                });
+                        }
                 },
 
                 objects: [],
 
-                labelFormat: null,
-                valueFormat: null,
-
                 _key: function( val ){
-                        var s1 = "qazwsxedcrfvtgbyhnujmik,ol.p;[']- ";
-                        var s2 = "йфяцычувскамепинртгоьшлбщдюзжхэъ- ";
+                        var s1 = "1234567890qazwsxedcrfvtgbyhnujmik,ol.p;[']- ";
+                        var s2 = "1234567890йфяцычувскамепинртгоьшлбщдюзжхэъ- ";
 
                         var s12 = "QAZWSXEDCRFVTGBYHNUJMIK<OL>P:{\"} ";
                         var s22 = "ЙФЯЦЫЧУВСКАМЕПИНРТГОЬШЛБЩДЮЗЖХЭЪ ";
@@ -74,15 +83,13 @@
                 },
 
                 _dataUpdate: function( name, callback ){
-                        if(!this.options.key) return;
-
-                        name = this._key( $.trim( name ).toLowerCase() );
-                        if(!name) return;
+                        if( !this.options.key ) return;
+                        if( !name ) return;
 
                         var length = name.length;
                         var limit = 1000;
 
-                        switch(length){
+                        switch( length ){
                                 case 1: limit = 50; break;
                                 case 2: limit = 100; break;
                                 case 3: limit = 200; break;
@@ -95,9 +102,13 @@
                         var query = {};
                         query.key = this.options.key;
 
-                        if(this.options.parentId){
-                                var parent = (this.options.parentType ? this.options.parentType : kladrObjectType.REGION)+'Id';
+                        if( this.options.parentId ){
+                                var parent = ( this.options.parentType ? this.options.parentType : kladrObjectType.REGION )+'Id';
                                 query[parent] = this.options.parentId;
+                        }
+
+                        if( this.options.withParents ){
+                                query.withParent = 1;
                         }
 
                         query.query = name;
@@ -109,28 +120,20 @@
 
                         var that = this;
                         $.kladrapi( query, function( data ){
+                                that.objects = [];
                                 var objects = data.result;
-                                var source = [];
-                                for(var i in objects){
-                                       var label = that.labelFormat(objects[i]);
-                                       var value = that.valueFormat(objects[i]);
-
+                                for( var i in objects ){
                                        var exist = false;
-                                       for(var j in source){
-                                                if(source[j].value == value){
+                                       for( var j in that.objects ){
+                                                if( that.objects[j].name == objects[i].name ){
                                                         exist = true;
                                                         break;
                                                 }
                                        }
 
-                                       if(exist) continue;
-
-                                       source.push({
-                                            label: label,
-                                            value: value,
-                                       });
+                                       if( exist ) continue;
+                                       that.objects.push(objects[i]);
                                 }
-                                that.objects = source;
                                 callback && callback();
                         });
                 },
@@ -139,38 +142,35 @@
                         $.ui.autocomplete.prototype._create.call( this );
 
                         var that = this;
-
-                        if(this.options.label){
-                                this.labelFormat = this.options.label;
-                        } else {
-                                this.labelFormat = function( obj ){
-                                        return obj.typeShort + '. ' + obj.name;
-                                }
-                        }
-
-                        if(this.options.value){
-                                this.valueFormat = this.options.value;
-                        } else {
-                                this.valueFormat = function( obj ){
-                                        return obj.name;
-                                }
-                        }
+                        $.ui.autocomplete.filter = this.options.filter;
 
                         this.source = function( request, response ) {
-                                that._dataUpdate( request.term );
-                                response( $.ui.autocomplete.filter( that.objects, request.term ) );
+                                var query = this._key( $.trim( request.term ).toLowerCase() );
+
+                                that._dataUpdate( query );
+
+                                var result = [];
+                                var objects = $.ui.autocomplete.filter( that.objects, query );
+                                for(var i in objects){
+                                    result.push({
+                                        label: that.options.label( objects[i], query ),
+                                        value: that.options.value( objects[i], query ),
+                                        obj: objects[i],
+                                    });
+                                }
+
+                                response(result);
+                        };
+
+                        this._renderItem = function( ul, item ) {
+                                return $( "<li>" )
+                                        .append( $( "<a>" ).html( item.label ) )
+                                        .appendTo( ul );
                         };
 
                         $.ui.autocomplete.escapeRegex = function( value ) {
                                 var val = value.replace( /[\-\[\]{}()*+?.,\\\^$|#\s]/g, "\\$&" );
                                 return that._key( val ).toLowerCase();
-                        };
-
-                        $.ui.autocomplete.filter = function( array, term ) {
-                                var matcher = new RegExp( '^'+$.ui.autocomplete.escapeRegex(term), "i" );
-                                return $.grep( array, function( value ) {
-                                        return matcher.test( value.value );
-                                });
                         };
                 },
 
@@ -179,4 +179,3 @@
                 },
         });
 })(jQuery);
-
