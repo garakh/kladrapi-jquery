@@ -5,7 +5,7 @@
 }
 
 .add-panel .wrp {
-    width: 980px;
+    width: 680px;
     margin: 0 auto;
     position: relative;
 }
@@ -92,7 +92,7 @@ label {
     width: 490px;
 }
 
-/* CR Custom Autocomplete */
+/* Custom Autocomplete */
 .ui-autocomplete {
     background: #ffffff;
     border: 1px solid #B1B1B1;
