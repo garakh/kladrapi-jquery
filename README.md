@@ -106,7 +106,7 @@ $( "input" ).kladr({
 });
 `````
 
-Более подробные примеры можно посмотреть в файлах example1.html и example2.html
+Более подробные примеры можно посмотреть в файлах  [example1.html](https://github.com/xescoder/kladrapi-jquery/blob/master/example1.html) и [example2.html](https://github.com/xescoder/kladrapi-jquery/blob/master/example2.html)
 
 
 [1]: http://kladr-api.ru/        "КЛАДР API"

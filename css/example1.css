@@ -4,10 +4,8 @@
     padding: 10px;
     border: 1px solid rgb(104, 104, 104);
     border-radius: 5px;
-}
-
-.field{
-
+    font-size: 0.8em;
+    line-height: 25px;
 }
 
 .field label{
