@@ -79,9 +79,9 @@ jQuery виджет "КЛАДР в облаке"
 
 `````javascript
 $( "input" ).kladr({
-	token: '51dfe5d42fb2b43e3300006e',
+        token: '51dfe5d42fb2b43e3300006e',
         key: '86a2c2a06f1b2451a87d05512cc2c3edfdf41969',
-	type: $.ui.kladrObjectType.CITY
+        type: $.ui.kladrObjectType.CITY
 });
 `````
 
@@ -89,11 +89,11 @@ $( "input" ).kladr({
 
 `````javascript
 $( "input" ).kladr({
-	token: '51dfe5d42fb2b43e3300006e',
+        token: '51dfe5d42fb2b43e3300006e',
         key: '86a2c2a06f1b2451a87d05512cc2c3edfdf41969',
-	type: $.ui.kladrObjectType.CITY,
-	parentType: $.ui.kladrObjectType.REGION,
-	parentId: "2900000000000"
+        type: $.ui.kladrObjectType.CITY,
+        parentType: $.ui.kladrObjectType.REGION,
+        parentId: "2900000000000"
 });
 `````
 
@@ -102,12 +102,12 @@ $( "input" ).kladr({
 
 `````javascript
 $( "input" ).kladr({
-	token: '51dfe5d42fb2b43e3300006e',
+        token: '51dfe5d42fb2b43e3300006e',
         key: '86a2c2a06f1b2451a87d05512cc2c3edfdf41969',
-	type: $.ui.kladrObjectType.CITY,
-	select: function( event, ui ) {
-		$( "label" ).text( ui.item.obj.type );
-	}
+        type: $.ui.kladrObjectType.CITY,
+        select: function( event, ui ) {
+                $( "label" ).text( ui.item.obj.type );
+        }
 });
 `````
 
