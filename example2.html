@@ -85,10 +85,10 @@
             /* JS */
             .scme-js, .scme-js pre
             {
-                font-size: small;
-                color: black;
-                font-family: Consolas, "Courier New", Courier, Monospace;
-                background-color: #ffffff;
+                    font-size: small;
+                    color: black;
+                    font-family: Consolas, "Courier New", Courier, Monospace;
+                    background-color: #ffffff;
             }
             .scme-js pre { margin: 0em; }
             .scme-js .rem { color: #008000; }
@@ -102,14 +102,13 @@
             .scme-js .html { color: #800000; }
             .scme-js .attr { color: #ff0000; }
             .scme-js .obj { color: #2b91af; }
-            .scme-js .alt
+            .scme-js .alt 
             {
-                background-color: #f4f4f4;
-                margin: 0em;
+                    background-color: #f4f4f4;
+                    margin: 0em;
             }
             .scme-js .lnum { color: #606060; }
         </style>
-
 
         <script src="js/jquery-1.9.1.min.js" type="text/javascript"></script>
         <script src="js/jquery-ui-1.10.2.custom.min.js" type="text/javascript"></script>
@@ -377,152 +376,157 @@
             </div>
             <div id="tabs-4">
                 <div class="scme-js">
-                    <a href="js/example2.js">Source</a>
-                    <ol><pre class="alt"><span class="lnum">   1:  </span>(<span class="kwrd">function</span>($){</pre>
+                    <a href="js/example2.js">Source</a><ol><pre class="alt"><span class="lnum">   1:  </span>(<span class="kwrd">function</span>($){</pre>
                         <pre><span class="lnum">   2:  </span>    $(<span class="kwrd">function</span>() {</pre>
-                        <pre class="alt"><span class="lnum">   3:  </span>        <span class="kwrd">var</span> city = $( <span class="str">'[name="city"]'</span> );</pre>
-                        <pre><span class="lnum">   4:  </span>        <span class="kwrd">var</span> street = $( <span class="str">'[name="street"]'</span> );</pre>
-                        <pre class="alt"><span class="lnum">   5:  </span>        <span class="kwrd">var</span> building = $( <span class="str">'[name="building"]'</span> );</pre>
-                        <pre><span class="lnum">   6:  </span>        <span class="kwrd">var</span> buildingAdd = $( <span class="str">'[name="building-add"]'</span> );</pre>
-                        <pre class="alt"><span class="lnum">   7:  </span>&nbsp;</pre>
-                        <pre><span class="lnum">   8:  </span>        <span class="kwrd">var</span> map = <span class="kwrd">null</span>;</pre>
-                        <pre class="alt"><span class="lnum">   9:  </span>        <span class="kwrd">var</span> placemark = <span class="kwrd">null</span>;</pre>
-                        <pre><span class="lnum">  10:  </span>        <span class="kwrd">var</span> map_created = <span class="kwrd">false</span>;</pre>
-                        <pre class="alt"><span class="lnum">  11:  </span>&nbsp;</pre>
-                        <pre><span class="lnum">  12:  </span>        <span class="kwrd">var</span> Label = <span class="kwrd">function</span>( obj, query ){</pre>
-                        <pre class="alt"><span class="lnum">  13:  </span>            <span class="kwrd">var</span> label = <span class="str">''</span>;</pre>
+                        <pre class="alt"><span class="lnum">   3:  </span>        <span class="kwrd">var</span> token = <span class="str">'51dfe5d42fb2b43e3300006e'</span>;</pre>
+                        <pre><span class="lnum">   4:  </span>        <span class="kwrd">var</span> key = <span class="str">'86a2c2a06f1b2451a87d05512cc2c3edfdf41969'</span>;        </pre>
+                        <pre class="alt"><span class="lnum">   5:  </span>&nbsp;</pre>
+                        <pre><span class="lnum">   6:  </span>        <span class="kwrd">var</span> city = $( <span class="str">'[name="city"]'</span> );</pre>
+                        <pre class="alt"><span class="lnum">   7:  </span>        <span class="kwrd">var</span> street = $( <span class="str">'[name="street"]'</span> );</pre>
+                        <pre><span class="lnum">   8:  </span>        <span class="kwrd">var</span> building = $( <span class="str">'[name="building"]'</span> );</pre>
+                        <pre class="alt"><span class="lnum">   9:  </span>        <span class="kwrd">var</span> buildingAdd = $( <span class="str">'[name="building-add"]'</span> );</pre>
+                        <pre><span class="lnum">  10:  </span>&nbsp;</pre>
+                        <pre class="alt"><span class="lnum">  11:  </span>        <span class="kwrd">var</span> map = <span class="kwrd">null</span>;</pre>
+                        <pre><span class="lnum">  12:  </span>        <span class="kwrd">var</span> placemark = <span class="kwrd">null</span>;</pre>
+                        <pre class="alt"><span class="lnum">  13:  </span>        <span class="kwrd">var</span> map_created = <span class="kwrd">false</span>;</pre>
                         <pre><span class="lnum">  14:  </span>&nbsp;</pre>
-                        <pre class="alt"><span class="lnum">  15:  </span>            <span class="kwrd">if</span>(obj.name){</pre>
-                        <pre><span class="lnum">  16:  </span>                <span class="kwrd">if</span>(obj.typeShort){</pre>
-                        <pre class="alt"><span class="lnum">  17:  </span>                    label += <span class="str">'&lt;span&nbsp;class="ac-s2"&gt;'</span> + obj.typeShort + <span class="str">'.&nbsp;'</span> + <span class="str">'&lt;/span&gt;'</span>;</pre>
-                        <pre><span class="lnum">  18:  </span>                }</pre>
-                        <pre class="alt"><span class="lnum">  19:  </span>&nbsp;</pre>
-                        <pre><span class="lnum">  20:  </span>                <span class="kwrd">if</span>(query.length &lt; obj.name.length){</pre>
-                        <pre class="alt"><span class="lnum">  21:  </span>                    label += <span class="str">'&lt;span&nbsp;class="ac-s"&gt;'</span> + obj.name.substr(<span class="str">0</span>, query.length) + <span class="str">'&lt;/span&gt;'</span>;</pre>
-                        <pre><span class="lnum">  22:  </span>                    label += <span class="str">'&lt;span&nbsp;class="ac-s2"&gt;'</span> + obj.name.substr(query.length, obj.name.length - query.length) + <span class="str">'&lt;/span&gt;'</span>;</pre>
-                        <pre class="alt"><span class="lnum">  23:  </span>                } <span class="kwrd">else</span> {</pre>
-                        <pre><span class="lnum">  24:  </span>                    label += <span class="str">'&lt;span&nbsp;class="ac-s"&gt;'</span> + obj.name + <span class="str">'&lt;/span&gt;'</span>;</pre>
-                        <pre class="alt"><span class="lnum">  25:  </span>                }</pre>
-                        <pre><span class="lnum">  26:  </span>            }</pre>
-                        <pre class="alt"><span class="lnum">  27:  </span>&nbsp;</pre>
-                        <pre><span class="lnum">  28:  </span>            <span class="kwrd">if</span>(obj.parents){</pre>
-                        <pre class="alt"><span class="lnum">  29:  </span>                <span class="kwrd">for</span>(<span class="kwrd">var</span> k = obj.parents.length-<span class="str">1</span>; k&gt;-<span class="str">1</span>; k--){</pre>
-                        <pre><span class="lnum">  30:  </span>                    <span class="kwrd">var</span> parent = obj.parents[k];</pre>
-                        <pre class="alt"><span class="lnum">  31:  </span>                    <span class="kwrd">if</span>(parent.name){</pre>
-                        <pre><span class="lnum">  32:  </span>                        <span class="kwrd">if</span>(label) label += <span class="str">'&lt;span&nbsp;class="ac-st"&gt;,&nbsp;&lt;/span&gt;'</span>;</pre>
-                        <pre class="alt"><span class="lnum">  33:  </span>                        label += <span class="str">'&lt;span&nbsp;class="ac-st"&gt;'</span> + parent.name + <span class="str">'&nbsp;'</span> + parent.typeShort + <span class="str">'.&lt;/span&gt;'</span>;</pre>
-                        <pre><span class="lnum">  34:  </span>                    }</pre>
-                        <pre class="alt"><span class="lnum">  35:  </span>                }</pre>
-                        <pre><span class="lnum">  36:  </span>            }</pre>
-                        <pre class="alt"><span class="lnum">  37:  </span>&nbsp;</pre>
-                        <pre><span class="lnum">  38:  </span>            <span class="kwrd">return</span> label;</pre>
-                        <pre class="alt"><span class="lnum">  39:  </span>        };</pre>
+                        <pre class="alt"><span class="lnum">  15:  </span>        <span class="kwrd">var</span> Label = <span class="kwrd">function</span>( obj, query ){</pre>
+                        <pre><span class="lnum">  16:  </span>            <span class="kwrd">var</span> label = <span class="str">''</span>;</pre>
+                        <pre class="alt"><span class="lnum">  17:  </span>&nbsp;</pre>
+                        <pre><span class="lnum">  18:  </span>            <span class="kwrd">if</span>(obj.name){</pre>
+                        <pre class="alt"><span class="lnum">  19:  </span>                <span class="kwrd">if</span>(obj.typeShort){</pre>
+                        <pre><span class="lnum">  20:  </span>                    label += <span class="str">'&lt;span&nbsp;class="ac-s2"&gt;'</span> + obj.typeShort + <span class="str">'.&nbsp;'</span> + <span class="str">'&lt;/span&gt;'</span>;</pre>
+                        <pre class="alt"><span class="lnum">  21:  </span>                }</pre>
+                        <pre><span class="lnum">  22:  </span>&nbsp;</pre>
+                        <pre class="alt"><span class="lnum">  23:  </span>                <span class="kwrd">if</span>(query.length &lt; obj.name.length){</pre>
+                        <pre><span class="lnum">  24:  </span>                    label += <span class="str">'&lt;span&nbsp;class="ac-s"&gt;'</span> + obj.name.substr(<span class="str">0</span>, query.length) + <span class="str">'&lt;/span&gt;'</span>;</pre>
+                        <pre class="alt"><span class="lnum">  25:  </span>                    label += <span class="str">'&lt;span&nbsp;class="ac-s2"&gt;'</span> + obj.name.substr(query.length, obj.name.length - query.length) + <span class="str">'&lt;/span&gt;'</span>;</pre>
+                        <pre><span class="lnum">  26:  </span>                } <span class="kwrd">else</span> {</pre>
+                        <pre class="alt"><span class="lnum">  27:  </span>                    label += <span class="str">'&lt;span&nbsp;class="ac-s"&gt;'</span> + obj.name + <span class="str">'&lt;/span&gt;'</span>;</pre>
+                        <pre><span class="lnum">  28:  </span>                }</pre>
+                        <pre class="alt"><span class="lnum">  29:  </span>            }</pre>
+                        <pre><span class="lnum">  30:  </span>&nbsp;</pre>
+                        <pre class="alt"><span class="lnum">  31:  </span>            <span class="kwrd">if</span>(obj.parents){</pre>
+                        <pre><span class="lnum">  32:  </span>                <span class="kwrd">for</span>(<span class="kwrd">var</span> k = obj.parents.length-<span class="str">1</span>; k&gt;-<span class="str">1</span>; k--){</pre>
+                        <pre class="alt"><span class="lnum">  33:  </span>                    <span class="kwrd">var</span> parent = obj.parents[k];</pre>
+                        <pre><span class="lnum">  34:  </span>                    <span class="kwrd">if</span>(parent.name){</pre>
+                        <pre class="alt"><span class="lnum">  35:  </span>                        <span class="kwrd">if</span>(label) label += <span class="str">'&lt;span&nbsp;class="ac-st"&gt;,&nbsp;&lt;/span&gt;'</span>;</pre>
+                        <pre><span class="lnum">  36:  </span>                        label += <span class="str">'&lt;span&nbsp;class="ac-st"&gt;'</span> + parent.name + <span class="str">'&nbsp;'</span> + parent.typeShort + <span class="str">'.&lt;/span&gt;'</span>;</pre>
+                        <pre class="alt"><span class="lnum">  37:  </span>                    }</pre>
+                        <pre><span class="lnum">  38:  </span>                }</pre>
+                        <pre class="alt"><span class="lnum">  39:  </span>            }</pre>
                         <pre><span class="lnum">  40:  </span>&nbsp;</pre>
-                        <pre class="alt"><span class="lnum">  41:  </span>        <span class="kwrd">var</span> MapUpdate = <span class="kwrd">function</span>(){</pre>
-                        <pre><span class="lnum">  42:  </span>            <span class="kwrd">var</span> zoom = <span class="str">12</span>;</pre>
-                        <pre class="alt"><span class="lnum">  43:  </span>            <span class="kwrd">var</span> address = <span class="str">''</span>;</pre>
-                        <pre><span class="lnum">  44:  </span>&nbsp;</pre>
-                        <pre class="alt"><span class="lnum">  45:  </span>            <span class="kwrd">var</span> cityVal = $.trim(city.val());</pre>
-                        <pre><span class="lnum">  46:  </span>            <span class="kwrd">if</span>(cityVal){</pre>
-                        <pre class="alt"><span class="lnum">  47:  </span>                <span class="kwrd">var</span> cityObj = city.data( <span class="str">"kladr-obj"</span> );</pre>
-                        <pre><span class="lnum">  48:  </span>                <span class="kwrd">if</span>(address) address += <span class="str">',&nbsp;'</span>;</pre>
-                        <pre class="alt"><span class="lnum">  49:  </span>                address += ( cityObj ? (cityObj.typeShort + <span class="str">'&nbsp;'</span>) : <span class="str">''</span> ) + cityVal;</pre>
-                        <pre><span class="lnum">  50:  </span>                zoom = <span class="str">12</span>;</pre>
-                        <pre class="alt"><span class="lnum">  51:  </span>            }</pre>
-                        <pre><span class="lnum">  52:  </span>&nbsp;</pre>
-                        <pre class="alt"><span class="lnum">  53:  </span>            <span class="kwrd">var</span> streetVal = $.trim(street.val());</pre>
-                        <pre><span class="lnum">  54:  </span>            <span class="kwrd">if</span>(streetVal){</pre>
-                        <pre class="alt"><span class="lnum">  55:  </span>                <span class="kwrd">var</span> streetObj = street.data( <span class="str">"kladr-obj"</span> );</pre>
-                        <pre><span class="lnum">  56:  </span>                <span class="kwrd">if</span>(address) address += <span class="str">',&nbsp;'</span>;</pre>
-                        <pre class="alt"><span class="lnum">  57:  </span>                address += ( streetObj ? (streetObj.typeShort + <span class="str">'&nbsp;'</span>) : <span class="str">''</span> ) + streetVal;</pre>
-                        <pre><span class="lnum">  58:  </span>                zoom = <span class="str">14</span>;</pre>
-                        <pre class="alt"><span class="lnum">  59:  </span>            }</pre>
-                        <pre><span class="lnum">  60:  </span>&nbsp;</pre>
-                        <pre class="alt"><span class="lnum">  61:  </span>            <span class="kwrd">var</span> buildingVal = $.trim(building.val());</pre>
-                        <pre><span class="lnum">  62:  </span>            <span class="kwrd">if</span>(buildingVal){</pre>
-                        <pre class="alt"><span class="lnum">  63:  </span>                <span class="kwrd">var</span> buildingObj = building.data( <span class="str">"kladr-obj"</span> );</pre>
-                        <pre><span class="lnum">  64:  </span>                <span class="kwrd">if</span>(address) address += <span class="str">',&nbsp;'</span>;</pre>
-                        <pre class="alt"><span class="lnum">  65:  </span>                address += ( buildingObj ? (buildingObj.typeShort + <span class="str">'&nbsp;'</span>) : <span class="str">''</span> ) + buildingVal;</pre>
-                        <pre><span class="lnum">  66:  </span>                zoom = <span class="str">16</span>;</pre>
-                        <pre class="alt"><span class="lnum">  67:  </span>            }</pre>
-                        <pre><span class="lnum">  68:  </span>&nbsp;</pre>
-                        <pre class="alt"><span class="lnum">  69:  </span>            <span class="kwrd">var</span> buildingAddVal = $.trim(buildingAdd.val());</pre>
-                        <pre><span class="lnum">  70:  </span>            <span class="kwrd">if</span>(buildingAddVal){</pre>
-                        <pre class="alt"><span class="lnum">  71:  </span>                <span class="kwrd">if</span>(address) address += <span class="str">',&nbsp;'</span>;</pre>
-                        <pre><span class="lnum">  72:  </span>                address += buildingAddVal;</pre>
-                        <pre class="alt"><span class="lnum">  73:  </span>                zoom = <span class="str">16</span>;</pre>
-                        <pre><span class="lnum">  74:  </span>            }</pre>
-                        <pre class="alt"><span class="lnum">  75:  </span>&nbsp;</pre>
-                        <pre><span class="lnum">  76:  </span>            <span class="kwrd">if</span>(address &amp;&amp; map_created){</pre>
-                        <pre class="alt"><span class="lnum">  77:  </span>                <span class="kwrd">var</span> geocode = ymaps.geocode(address);</pre>
-                        <pre><span class="lnum">  78:  </span>                geocode.then(<span class="kwrd">function</span>(res){</pre>
-                        <pre class="alt"><span class="lnum">  79:  </span>                    map.geoObjects.each(<span class="kwrd">function</span> (geoObject) {</pre>
-                        <pre><span class="lnum">  80:  </span>                            map.geoObjects.remove(geoObject);</pre>
-                        <pre class="alt"><span class="lnum">  81:  </span>                    });</pre>
-                        <pre><span class="lnum">  82:  </span>&nbsp;</pre>
-                        <pre class="alt"><span class="lnum">  83:  </span>                    <span class="kwrd">var</span> position = res.geoObjects.get(<span class="str">0</span>).geometry.getCoordinates();</pre>
-                        <pre><span class="lnum">  84:  </span>&nbsp;</pre>
-                        <pre class="alt"><span class="lnum">  85:  </span>                    placemark = <span class="kwrd">new</span> ymaps.Placemark(position, {}, {});</pre>
-                        <pre><span class="lnum">  86:  </span>&nbsp;</pre>
-                        <pre class="alt"><span class="lnum">  87:  </span>                    map.geoObjects.add(placemark);</pre>
-                        <pre><span class="lnum">  88:  </span>                    map.setCenter(position, zoom);</pre>
-                        <pre class="alt"><span class="lnum">  89:  </span>                });</pre>
-                        <pre><span class="lnum">  90:  </span>            }</pre>
-                        <pre class="alt"><span class="lnum">  91:  </span>        }</pre>
-                        <pre><span class="lnum">  92:  </span>&nbsp;</pre>
-                        <pre class="alt"><span class="lnum">  93:  </span>        city.kladr({</pre>
-                        <pre><span class="lnum">  94:  </span>            key: <span class="str">'demo'</span>,</pre>
-                        <pre class="alt"><span class="lnum">  95:  </span>            type: $.ui.kladrObjectType.CITY,</pre>
-                        <pre><span class="lnum">  96:  </span>            withParents: <span class="kwrd">true</span>,</pre>
-                        <pre class="alt"><span class="lnum">  97:  </span>            label: Label,</pre>
-                        <pre><span class="lnum">  98:  </span>            select: <span class="kwrd">function</span>( <span class="kwrd">event</span>, ui ) {</pre>
-                        <pre class="alt"><span class="lnum">  99:  </span>                city.data( <span class="str">"kladr-obj"</span>, ui.item.obj );</pre>
-                        <pre><span class="lnum"> 100:  </span>                city.parent().find( <span class="str">'label'</span> ).text( ui.item.obj.type );</pre>
-                        <pre class="alt"><span class="lnum"> 101:  </span>                street.kladr( <span class="str">'option'</span>, { parentType: $.ui.kladrObjectType.CITY, parentId: ui.item.obj.id } );</pre>
-                        <pre><span class="lnum"> 102:  </span>                building.kladr( <span class="str">'option'</span>, { parentType: $.ui.kladrObjectType.CITY, parentId: ui.item.obj.id } );</pre>
-                        <pre class="alt"><span class="lnum"> 103:  </span>                MapUpdate();</pre>
-                        <pre><span class="lnum"> 104:  </span>            }</pre>
-                        <pre class="alt"><span class="lnum"> 105:  </span>        });</pre>
-                        <pre><span class="lnum"> 106:  </span>&nbsp;</pre>
-                        <pre class="alt"><span class="lnum"> 107:  </span>        street.kladr({</pre>
-                        <pre><span class="lnum"> 108:  </span>            key: <span class="str">'demo'</span>,</pre>
-                        <pre class="alt"><span class="lnum"> 109:  </span>            type: $.ui.kladrObjectType.STREET,</pre>
-                        <pre><span class="lnum"> 110:  </span>            label: Label,</pre>
-                        <pre class="alt"><span class="lnum"> 111:  </span>            select: <span class="kwrd">function</span>( <span class="kwrd">event</span>, ui ) {</pre>
-                        <pre><span class="lnum"> 112:  </span>                street.data( <span class="str">"kladr-obj"</span>, ui.item.obj );</pre>
-                        <pre class="alt"><span class="lnum"> 113:  </span>                street.parent().find( <span class="str">'label'</span> ).text( ui.item.obj.type );</pre>
-                        <pre><span class="lnum"> 114:  </span>                building.kladr( <span class="str">'option'</span>, { parentType: $.ui.kladrObjectType.CITY, parentId: ui.item.obj.id } );</pre>
-                        <pre class="alt"><span class="lnum"> 115:  </span>                MapUpdate();</pre>
-                        <pre><span class="lnum"> 116:  </span>            }</pre>
-                        <pre class="alt"><span class="lnum"> 117:  </span>        });</pre>
-                        <pre><span class="lnum"> 118:  </span>&nbsp;</pre>
-                        <pre class="alt"><span class="lnum"> 119:  </span>        building.kladr({</pre>
-                        <pre><span class="lnum"> 120:  </span>            key: <span class="str">'demo'</span>,</pre>
-                        <pre class="alt"><span class="lnum"> 121:  </span>            type: $.ui.kladrObjectType.BUILDING,</pre>
-                        <pre><span class="lnum"> 122:  </span>            label: Label,</pre>
-                        <pre class="alt"><span class="lnum"> 123:  </span>            select: <span class="kwrd">function</span>( <span class="kwrd">event</span>, ui ) {</pre>
-                        <pre><span class="lnum"> 124:  </span>                building.data( <span class="str">"kladr-obj"</span>, ui.item.obj );</pre>
-                        <pre class="alt"><span class="lnum"> 125:  </span>                MapUpdate();</pre>
-                        <pre><span class="lnum"> 126:  </span>            }</pre>
-                        <pre class="alt"><span class="lnum"> 127:  </span>        });</pre>
-                        <pre><span class="lnum"> 128:  </span>&nbsp;</pre>
-                        <pre class="alt"><span class="lnum"> 129:  </span>        city.add(street).add(building).add(buildingAdd).change(<span class="kwrd">function</span>(){</pre>
-                        <pre><span class="lnum"> 130:  </span>            MapUpdate();</pre>
-                        <pre class="alt"><span class="lnum"> 131:  </span>        });</pre>
-                        <pre><span class="lnum"> 132:  </span>&nbsp;</pre>
-                        <pre class="alt"><span class="lnum"> 133:  </span>        ymaps.ready(<span class="kwrd">function</span>(){</pre>
-                        <pre><span class="lnum"> 134:  </span>            <span class="kwrd">if</span>(map_created) <span class="kwrd">return</span>;</pre>
-                        <pre class="alt"><span class="lnum"> 135:  </span>            map_created = <span class="kwrd">true</span>;</pre>
-                        <pre><span class="lnum"> 136:  </span>&nbsp;</pre>
-                        <pre class="alt"><span class="lnum"> 137:  </span>            map = <span class="kwrd">new</span> ymaps.Map(<span class="str">'map'</span>, {</pre>
-                        <pre><span class="lnum"> 138:  </span>                center: [<span class="str">55</span>.<span class="str">76</span>, <span class="str">37</span>.<span class="str">64</span>],</pre>
-                        <pre class="alt"><span class="lnum"> 139:  </span>                zoom: <span class="str">12</span></pre>
-                        <pre><span class="lnum"> 140:  </span>            });</pre>
-                        <pre class="alt"><span class="lnum"> 141:  </span>&nbsp;</pre>
-                        <pre><span class="lnum"> 142:  </span>            map.controls.add(<span class="str">'smallZoomControl'</span>, { top: <span class="str">5</span>, left: <span class="str">5</span> });</pre>
-                        <pre class="alt"><span class="lnum"> 143:  </span>        });</pre>
-                        <pre><span class="lnum"> 144:  </span>    });</pre>
-                        <pre class="alt"><span class="lnum"> 145:  </span>})(jQuery); </pre></ol>
+                        <pre class="alt"><span class="lnum">  41:  </span>            <span class="kwrd">return</span> label;</pre>
+                        <pre><span class="lnum">  42:  </span>        };</pre>
+                        <pre class="alt"><span class="lnum">  43:  </span>&nbsp;</pre>
+                        <pre><span class="lnum">  44:  </span>        <span class="kwrd">var</span> MapUpdate = <span class="kwrd">function</span>(){</pre>
+                        <pre class="alt"><span class="lnum">  45:  </span>            <span class="kwrd">var</span> zoom = <span class="str">12</span>;</pre>
+                        <pre><span class="lnum">  46:  </span>            <span class="kwrd">var</span> address = <span class="str">''</span>;</pre>
+                        <pre class="alt"><span class="lnum">  47:  </span>&nbsp;</pre>
+                        <pre><span class="lnum">  48:  </span>            <span class="kwrd">var</span> cityVal = $.trim(city.val());</pre>
+                        <pre class="alt"><span class="lnum">  49:  </span>            <span class="kwrd">if</span>(cityVal){</pre>
+                        <pre><span class="lnum">  50:  </span>                <span class="kwrd">var</span> cityObj = city.data( <span class="str">"kladr-obj"</span> );</pre>
+                        <pre class="alt"><span class="lnum">  51:  </span>                <span class="kwrd">if</span>(address) address += <span class="str">',&nbsp;'</span>;</pre>
+                        <pre><span class="lnum">  52:  </span>                address += ( cityObj ? (cityObj.typeShort + <span class="str">'&nbsp;'</span>) : <span class="str">''</span> ) + cityVal;</pre>
+                        <pre class="alt"><span class="lnum">  53:  </span>                zoom = <span class="str">12</span>;</pre>
+                        <pre><span class="lnum">  54:  </span>            }</pre>
+                        <pre class="alt"><span class="lnum">  55:  </span>&nbsp;</pre>
+                        <pre><span class="lnum">  56:  </span>            <span class="kwrd">var</span> streetVal = $.trim(street.val());</pre>
+                        <pre class="alt"><span class="lnum">  57:  </span>            <span class="kwrd">if</span>(streetVal){</pre>
+                        <pre><span class="lnum">  58:  </span>                <span class="kwrd">var</span> streetObj = street.data( <span class="str">"kladr-obj"</span> );</pre>
+                        <pre class="alt"><span class="lnum">  59:  </span>                <span class="kwrd">if</span>(address) address += <span class="str">',&nbsp;'</span>;</pre>
+                        <pre><span class="lnum">  60:  </span>                address += ( streetObj ? (streetObj.typeShort + <span class="str">'&nbsp;'</span>) : <span class="str">''</span> ) + streetVal;</pre>
+                        <pre class="alt"><span class="lnum">  61:  </span>                zoom = <span class="str">14</span>;</pre>
+                        <pre><span class="lnum">  62:  </span>            }</pre>
+                        <pre class="alt"><span class="lnum">  63:  </span>&nbsp;</pre>
+                        <pre><span class="lnum">  64:  </span>            <span class="kwrd">var</span> buildingVal = $.trim(building.val());</pre>
+                        <pre class="alt"><span class="lnum">  65:  </span>            <span class="kwrd">if</span>(buildingVal){</pre>
+                        <pre><span class="lnum">  66:  </span>                <span class="kwrd">var</span> buildingObj = building.data( <span class="str">"kladr-obj"</span> );</pre>
+                        <pre class="alt"><span class="lnum">  67:  </span>                <span class="kwrd">if</span>(address) address += <span class="str">',&nbsp;'</span>;</pre>
+                        <pre><span class="lnum">  68:  </span>                address += ( buildingObj ? (buildingObj.typeShort + <span class="str">'&nbsp;'</span>) : <span class="str">''</span> ) + buildingVal;</pre>
+                        <pre class="alt"><span class="lnum">  69:  </span>                zoom = <span class="str">16</span>;</pre>
+                        <pre><span class="lnum">  70:  </span>            }</pre>
+                        <pre class="alt"><span class="lnum">  71:  </span>&nbsp;</pre>
+                        <pre><span class="lnum">  72:  </span>            <span class="kwrd">var</span> buildingAddVal = $.trim(buildingAdd.val());</pre>
+                        <pre class="alt"><span class="lnum">  73:  </span>            <span class="kwrd">if</span>(buildingAddVal){</pre>
+                        <pre><span class="lnum">  74:  </span>                <span class="kwrd">if</span>(address) address += <span class="str">',&nbsp;'</span>;</pre>
+                        <pre class="alt"><span class="lnum">  75:  </span>                address += buildingAddVal;</pre>
+                        <pre><span class="lnum">  76:  </span>                zoom = <span class="str">16</span>;</pre>
+                        <pre class="alt"><span class="lnum">  77:  </span>            }</pre>
+                        <pre><span class="lnum">  78:  </span>&nbsp;</pre>
+                        <pre class="alt"><span class="lnum">  79:  </span>            <span class="kwrd">if</span>(address &amp;&amp; map_created){</pre>
+                        <pre><span class="lnum">  80:  </span>                <span class="kwrd">var</span> geocode = ymaps.geocode(address);</pre>
+                        <pre class="alt"><span class="lnum">  81:  </span>                geocode.then(<span class="kwrd">function</span>(res){</pre>
+                        <pre><span class="lnum">  82:  </span>                    map.geoObjects.each(<span class="kwrd">function</span> (geoObject) {</pre>
+                        <pre class="alt"><span class="lnum">  83:  </span>                            map.geoObjects.remove(geoObject);</pre>
+                        <pre><span class="lnum">  84:  </span>                    });</pre>
+                        <pre class="alt"><span class="lnum">  85:  </span>&nbsp;</pre>
+                        <pre><span class="lnum">  86:  </span>                    <span class="kwrd">var</span> position = res.geoObjects.get(<span class="str">0</span>).geometry.getCoordinates();</pre>
+                        <pre class="alt"><span class="lnum">  87:  </span>&nbsp;</pre>
+                        <pre><span class="lnum">  88:  </span>                    placemark = <span class="kwrd">new</span> ymaps.Placemark(position, {}, {});</pre>
+                        <pre class="alt"><span class="lnum">  89:  </span>&nbsp;</pre>
+                        <pre><span class="lnum">  90:  </span>                    map.geoObjects.add(placemark);</pre>
+                        <pre class="alt"><span class="lnum">  91:  </span>                    map.setCenter(position, zoom);</pre>
+                        <pre><span class="lnum">  92:  </span>                });</pre>
+                        <pre class="alt"><span class="lnum">  93:  </span>            }</pre>
+                        <pre><span class="lnum">  94:  </span>        }</pre>
+                        <pre class="alt"><span class="lnum">  95:  </span>&nbsp;</pre>
+                        <pre><span class="lnum">  96:  </span>        city.kladr({</pre>
+                        <pre class="alt"><span class="lnum">  97:  </span>            token: token,</pre>
+                        <pre><span class="lnum">  98:  </span>            key: key,</pre>
+                        <pre class="alt"><span class="lnum">  99:  </span>            type: $.ui.kladrObjectType.CITY,</pre>
+                        <pre><span class="lnum"> 100:  </span>            withParents: <span class="kwrd">true</span>,</pre>
+                        <pre class="alt"><span class="lnum"> 101:  </span>            label: Label,</pre>
+                        <pre><span class="lnum"> 102:  </span>            select: <span class="kwrd">function</span>( <span class="kwrd">event</span>, ui ) {</pre>
+                        <pre class="alt"><span class="lnum"> 103:  </span>                city.data( <span class="str">"kladr-obj"</span>, ui.item.obj );</pre>
+                        <pre><span class="lnum"> 104:  </span>                city.parent().find( <span class="str">'label'</span> ).text( ui.item.obj.type );</pre>
+                        <pre class="alt"><span class="lnum"> 105:  </span>                street.kladr( <span class="str">'option'</span>, { parentType: $.ui.kladrObjectType.CITY, parentId: ui.item.obj.id } );</pre>
+                        <pre><span class="lnum"> 106:  </span>                building.kladr( <span class="str">'option'</span>, { parentType: $.ui.kladrObjectType.CITY, parentId: ui.item.obj.id } );</pre>
+                        <pre class="alt"><span class="lnum"> 107:  </span>                MapUpdate();</pre>
+                        <pre><span class="lnum"> 108:  </span>            }</pre>
+                        <pre class="alt"><span class="lnum"> 109:  </span>        });</pre>
+                        <pre><span class="lnum"> 110:  </span>&nbsp;</pre>
+                        <pre class="alt"><span class="lnum"> 111:  </span>        street.kladr({</pre>
+                        <pre><span class="lnum"> 112:  </span>            token: token,</pre>
+                        <pre class="alt"><span class="lnum"> 113:  </span>            key: key,</pre>
+                        <pre><span class="lnum"> 114:  </span>            type: $.ui.kladrObjectType.STREET,</pre>
+                        <pre class="alt"><span class="lnum"> 115:  </span>            label: Label,</pre>
+                        <pre><span class="lnum"> 116:  </span>            select: <span class="kwrd">function</span>( <span class="kwrd">event</span>, ui ) {</pre>
+                        <pre class="alt"><span class="lnum"> 117:  </span>                street.data( <span class="str">"kladr-obj"</span>, ui.item.obj );</pre>
+                        <pre><span class="lnum"> 118:  </span>                street.parent().find( <span class="str">'label'</span> ).text( ui.item.obj.type );</pre>
+                        <pre class="alt"><span class="lnum"> 119:  </span>                building.kladr( <span class="str">'option'</span>, { parentType: $.ui.kladrObjectType.CITY, parentId: ui.item.obj.id } );</pre>
+                        <pre><span class="lnum"> 120:  </span>                MapUpdate();</pre>
+                        <pre class="alt"><span class="lnum"> 121:  </span>            }</pre>
+                        <pre><span class="lnum"> 122:  </span>        });</pre>
+                        <pre class="alt"><span class="lnum"> 123:  </span>&nbsp;</pre>
+                        <pre><span class="lnum"> 124:  </span>        building.kladr({</pre>
+                        <pre class="alt"><span class="lnum"> 125:  </span>            token: token,</pre>
+                        <pre><span class="lnum"> 126:  </span>            key: key,</pre>
+                        <pre class="alt"><span class="lnum"> 127:  </span>            type: $.ui.kladrObjectType.BUILDING,</pre>
+                        <pre><span class="lnum"> 128:  </span>            label: Label,</pre>
+                        <pre class="alt"><span class="lnum"> 129:  </span>            select: <span class="kwrd">function</span>( <span class="kwrd">event</span>, ui ) {</pre>
+                        <pre><span class="lnum"> 130:  </span>                building.data( <span class="str">"kladr-obj"</span>, ui.item.obj );</pre>
+                        <pre class="alt"><span class="lnum"> 131:  </span>                MapUpdate();</pre>
+                        <pre><span class="lnum"> 132:  </span>            }</pre>
+                        <pre class="alt"><span class="lnum"> 133:  </span>        });</pre>
+                        <pre><span class="lnum"> 134:  </span>&nbsp;</pre>
+                        <pre class="alt"><span class="lnum"> 135:  </span>        city.add(street).add(building).add(buildingAdd).change(<span class="kwrd">function</span>(){</pre>
+                        <pre><span class="lnum"> 136:  </span>            MapUpdate();</pre>
+                        <pre class="alt"><span class="lnum"> 137:  </span>        });</pre>
+                        <pre><span class="lnum"> 138:  </span>&nbsp;</pre>
+                        <pre class="alt"><span class="lnum"> 139:  </span>        ymaps.ready(<span class="kwrd">function</span>(){</pre>
+                        <pre><span class="lnum"> 140:  </span>            <span class="kwrd">if</span>(map_created) <span class="kwrd">return</span>;</pre>
+                        <pre class="alt"><span class="lnum"> 141:  </span>            map_created = <span class="kwrd">true</span>;</pre>
+                        <pre><span class="lnum"> 142:  </span>&nbsp;</pre>
+                        <pre class="alt"><span class="lnum"> 143:  </span>            map = <span class="kwrd">new</span> ymaps.Map(<span class="str">'map'</span>, {</pre>
+                        <pre><span class="lnum"> 144:  </span>                center: [<span class="str">55</span>.<span class="str">76</span>, <span class="str">37</span>.<span class="str">64</span>],</pre>
+                        <pre class="alt"><span class="lnum"> 145:  </span>                zoom: <span class="str">12</span></pre>
+                        <pre><span class="lnum"> 146:  </span>            });</pre>
+                        <pre class="alt"><span class="lnum"> 147:  </span>&nbsp;</pre>
+                        <pre><span class="lnum"> 148:  </span>            map.controls.add(<span class="str">'smallZoomControl'</span>, { top: <span class="str">5</span>, left: <span class="str">5</span> });</pre>
+                        <pre class="alt"><span class="lnum"> 149:  </span>        });</pre>
+                        <pre><span class="lnum"> 150:  </span>    });</pre>
+                        <pre class="alt"><span class="lnum"> 151:  </span>})(jQuery); </pre></ol>
                 </div>
             </div>
         </div>

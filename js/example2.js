@@ -1,5 +1,8 @@
 (function($){
     $(function() {
+        var token = '51dfe5d42fb2b43e3300006e';
+        var key = '86a2c2a06f1b2451a87d05512cc2c3edfdf41969';        
+        
         var city = $( '[name="city"]' );
         var street = $( '[name="street"]' );
         var building = $( '[name="building"]' );
@@ -91,7 +94,8 @@
         }
 
         city.kladr({
-            key: 'demo',
+            token: token,
+            key: key,
             type: $.ui.kladrObjectType.CITY,
             withParents: true,
             label: Label,
@@ -105,7 +109,8 @@
         });
 
         street.kladr({
-            key: 'demo',
+            token: token,
+            key: key,
             type: $.ui.kladrObjectType.STREET,
             label: Label,
             select: function( event, ui ) {
@@ -117,7 +122,8 @@
         });
 
         building.kladr({
-            key: 'demo',
+            token: token,
+            key: key,
             type: $.ui.kladrObjectType.BUILDING,
             label: Label,
             select: function( event, ui ) {
