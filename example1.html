@@ -85,10 +85,10 @@
             /* JS */
             .scme-js, .scme-js pre
             {
-                font-size: small;
-                color: black;
-                font-family: Consolas, "Courier New", Courier, Monospace;
-                background-color: #ffffff;
+                    font-size: small;
+                    color: black;
+                    font-family: Consolas, "Courier New", Courier, Monospace;
+                    background-color: #ffffff;
             }
             .scme-js pre { margin: 0em; }
             .scme-js .rem { color: #008000; }
@@ -102,10 +102,10 @@
             .scme-js .html { color: #800000; }
             .scme-js .attr { color: #ff0000; }
             .scme-js .obj { color: #2b91af; }
-            .scme-js .alt
+            .scme-js .alt 
             {
-                background-color: #f4f4f4;
-                margin: 0em;
+                    background-color: #f4f4f4;
+                    margin: 0em;
             }
             .scme-js .lnum { color: #606060; }
         </style>
@@ -206,21 +206,24 @@
                 <div class="scme-js">
                     <a href="js/example1.js">Source</a>
                     <ol><pre class="alt"><span class="lnum">   1:  </span>(<span class="kwrd">function</span>($){</pre>
-                    <pre><span class="lnum">   2:  </span>    $(<span class="kwrd">function</span>() {</pre>
-                    <pre class="alt"><span class="lnum">   3:  </span>        $( <span class="str">'[name="location"]'</span> ).kladr({</pre>
-                    <pre><span class="lnum">   4:  </span>            key: <span class="str">'demo'</span>,</pre>
-                    <pre class="alt"><span class="lnum">   5:  </span>            type: $.ui.kladrObjectType.CITY,</pre>
-                    <pre><span class="lnum">   6:  </span>            select: <span class="kwrd">function</span>( <span class="kwrd">event</span>, ui ) {</pre>
-                    <pre class="alt"><span class="lnum">   7:  </span>                $( <span class="str">'[name="street"]'</span> ).kladr( <span class="str">'option'</span>, { parentType: $.ui.kladrObjectType.CITY, parentId: ui.item.obj.id } );</pre>
-                    <pre><span class="lnum">   8:  </span>            }</pre>
-                    <pre class="alt"><span class="lnum">   9:  </span>        });</pre>
-                    <pre><span class="lnum">  10:  </span>&nbsp;</pre>
-                    <pre class="alt"><span class="lnum">  11:  </span>        $( <span class="str">'[name="street"]'</span> ).kladr({</pre>
-                    <pre><span class="lnum">  12:  </span>            key: <span class="str">'demo'</span>,</pre>
-                    <pre class="alt"><span class="lnum">  13:  </span>            type: $.ui.kladrObjectType.STREET</pre>
-                    <pre><span class="lnum">  14:  </span>        });</pre>
-                    <pre class="alt"><span class="lnum">  15:  </span>    });</pre>
-                    <pre><span class="lnum">  16:  </span>})(jQuery); </pre></ol>
+                        <pre><span class="lnum">   2:  </span>    $(<span class="kwrd">function</span>() {</pre>
+                        <pre class="alt"><span class="lnum">   3:  </span>        $( <span class="str">'[name="location"]'</span> ).kladr({</pre>
+                        <pre><span class="lnum">   4:  </span>            token: <span class="str">'51dfe5d42fb2b43e3300006e'</span>,</pre>
+                        <pre class="alt"><span class="lnum">   5:  </span>            key: <span class="str">'86a2c2a06f1b2451a87d05512cc2c3edfdf41969'</span>,</pre>
+                        <pre><span class="lnum">   6:  </span>            type: $.ui.kladrObjectType.CITY,</pre>
+                        <pre class="alt"><span class="lnum">   7:  </span>            select: <span class="kwrd">function</span>( <span class="kwrd">event</span>, ui ) {</pre>
+                        <pre><span class="lnum">   8:  </span>                $( <span class="str">'[name="street"]'</span> ).kladr( <span class="str">'option'</span>, { parentType: $.ui.kladrObjectType.CITY, parentId: ui.item.obj.id } );</pre>
+                        <pre class="alt"><span class="lnum">   9:  </span>            }</pre>
+                        <pre><span class="lnum">  10:  </span>        });</pre>
+                        <pre class="alt"><span class="lnum">  11:  </span>&nbsp;</pre>
+                        <pre><span class="lnum">  12:  </span>        $( <span class="str">'[name="street"]'</span> ).kladr({</pre>
+                        <pre class="alt"><span class="lnum">  13:  </span>            token: <span class="str">'51dfe5d42fb2b43e3300006e'</span>,</pre>
+                        <pre><span class="lnum">  14:  </span>            key: <span class="str">'86a2c2a06f1b2451a87d05512cc2c3edfdf41969'</span>,</pre>
+                        <pre class="alt"><span class="lnum">  15:  </span>            type: $.ui.kladrObjectType.STREET</pre>
+                        <pre><span class="lnum">  16:  </span>        });</pre>
+                        <pre class="alt"><span class="lnum">  17:  </span>    });</pre>
+                        <pre><span class="lnum">  18:  </span>})(jQuery); </pre>
+                    </ol>
                 </div>
             </div>
         </div>
