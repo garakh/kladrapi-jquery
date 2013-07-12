@@ -8,6 +8,7 @@ jQuery виджет "КЛАДР в облаке"
 Опции виджета
 -------------
 
+* **token** - токен для доступа к сервису [kladr-api.ru] [1], по умолчанию равен *null*
 * **key** – ключ для доступа к сервису [kladr-api.ru] [1], по умолчанию равен *null*
 * **type** – тип объектов для подстановки, по умолчанию *$.ui.kladrObjectType.REGION*
 * **parentType** – тип родительского объекта для ограничения области поиска, по умолчанию *$.ui.kladrObjectType.REGION*
@@ -58,6 +59,7 @@ jQuery виджет "КЛАДР в облаке"
 Функция **$.kladrapi( options, callback )** делает запрос  к сервису [kladr-api.ru] [1], результат возвращает в функцию *callback*. В качестве options принимает объект с параметрами запроса. 
 
 Список возможных параметров:
+* **token** - токен для доступа к сервису
 * **key** – ключ для доступа к сервису
 * **regionId** – код региона
 * **districtId** – код района
@@ -77,8 +79,9 @@ jQuery виджет "КЛАДР в облаке"
 
 `````javascript
 $( "input" ).kladr({
-	key: 'demo',
-	type: $.ui.kladrObjectType.CITY
+        token: '51dfe5d42fb2b43e3300006e',
+        key: '86a2c2a06f1b2451a87d05512cc2c3edfdf41969',
+        type: $.ui.kladrObjectType.CITY
 });
 `````
 
@@ -86,10 +89,11 @@ $( "input" ).kladr({
 
 `````javascript
 $( "input" ).kladr({
-	key: 'demo',
-	type: $.ui.kladrObjectType.CITY,
-	parentType: $.ui.kladrObjectType.REGION,
-	parentId: "2900000000000"
+        token: '51dfe5d42fb2b43e3300006e',
+        key: '86a2c2a06f1b2451a87d05512cc2c3edfdf41969',
+        type: $.ui.kladrObjectType.CITY,
+        parentType: $.ui.kladrObjectType.REGION,
+        parentId: "2900000000000"
 });
 `````
 
@@ -98,11 +102,12 @@ $( "input" ).kladr({
 
 `````javascript
 $( "input" ).kladr({
-	key: 'demo',
-	type: $.ui.kladrObjectType.CITY,
-	select: function( event, ui ) {
-		$( "label" ).text( ui.item.obj.type );
-	}
+        token: '51dfe5d42fb2b43e3300006e',
+        key: '86a2c2a06f1b2451a87d05512cc2c3edfdf41969',
+        type: $.ui.kladrObjectType.CITY,
+        select: function( event, ui ) {
+                $( "label" ).text( ui.item.obj.type );
+        }
 });
 `````
 
