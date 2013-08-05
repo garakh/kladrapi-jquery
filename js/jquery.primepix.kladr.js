@@ -85,18 +85,8 @@
 
                 _dataUpdate: function( name, callback ){
                         if( !this.options.key ) return;
-                        if( !name ) return;
 
-                        var length = name.length;
-                        var limit = 1000;
-
-                        switch( length ){
-                                case 1: limit = 50; break;
-                                case 2: limit = 100; break;
-                                case 3: limit = 200; break;
-                                case 4: limit = 400; break;
-                                case 5: limit = 800; break;
-                        }
+                        var limit = 2000;
 
                         var kladrObjectType = $.ui.kladrObjectType;
 
@@ -128,7 +118,7 @@
                                 for( var i in objects ){
                                        var exist = false;
                                        for( var j in that.objects ){
-                                                if( that.objects[j].name == objects[i].name ){
+                                                if( that.objects[j].id == objects[i].id ){
                                                         exist = true;
                                                         break;
                                                 }
@@ -137,6 +127,9 @@
                                        if( exist ) continue;
                                        that.objects.push(objects[i]);
                                 }
+                                
+                                console.log(that.objects.length);
+                                
                                 callback && callback();
                         });
                 },
@@ -145,12 +138,16 @@
                         $.ui.autocomplete.prototype._create.call( this );
 
                         var that = this;
+                        
+                        that._dataUpdate();
                         $.ui.autocomplete.filter = this.options.filter;
 
                         this.source = function( request, response ) {
                                 var query = this._key( $.trim( request.term ).toLowerCase() );
 
                                 that._dataUpdate( query );
+                                
+                                console.log(that.objects.length);
 
                                 var result = [];
                                 var objects = $.ui.autocomplete.filter( that.objects, query );
