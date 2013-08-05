@@ -116,7 +116,7 @@
             select: function( event, ui ) {
                 street.data( "kladr-obj", ui.item.obj );
                 street.parent().find( 'label' ).text( ui.item.obj.type );
-                building.kladr( 'option', { parentType: $.ui.kladrObjectType.CITY, parentId: ui.item.obj.id } );
+                building.kladr( 'option', { parentType: $.ui.kladrObjectType.STREET, parentId: ui.item.obj.id } );
                 MapUpdate();
             }
         });
@@ -131,9 +131,19 @@
                 MapUpdate();
             }
         });
+        
+        var fields = city.add(street).add(building).add(buildingAdd);
 
-        city.add(street).add(building).add(buildingAdd).change(function(){
+        fields.change(function(){
             MapUpdate();
+        });
+        
+        fields.bind('downloadStart', function(){
+            $(this).parent().find('.spinner').show();
+        });
+        
+        fields.bind('downloadStop', function(){
+            $(this).parent().find('.spinner').hide();
         });
 
         ymaps.ready(function(){

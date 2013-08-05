@@ -43,10 +43,22 @@ label {
 }
 
 .regular__ctrls .ffield {
+    position: relative;
     padding-top: 2px;
     padding-bottom: 11px;
     overflow: hidden;
     width: 100%;
+}
+
+.regular__ctrls .spinner{
+    position: absolute;
+    top: 4px;
+    right: 21px;
+    display: none;
+}
+
+.regular__ctrls .spinner2 {
+    left: 300px;
 }
 
 .regular__ctrls .ffield__lbl {
