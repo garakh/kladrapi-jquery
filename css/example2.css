@@ -104,6 +104,52 @@ label {
     width: 490px;
 }
 
+
+/* Addition */
+.addition{
+    margin-left: 170px;
+    width: 490px;
+}
+
+.addition .block{
+    display: block;
+    height: 130px;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.06);
+    border-radius: 10px;
+}
+
+.addition .block:nth-child(1){
+    float: left;
+    width: 200px;
+}
+
+.addition .block:nth-child(2){
+    float: right;
+    width: 240px;
+}
+
+.addition p{
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+}
+
+.addition .title{
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.addition ul{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.addition .name{
+    font-style: italic;
+}
+
+
 /* Custom Autocomplete */
 .ui-autocomplete {
     background: #ffffff;

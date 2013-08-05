@@ -7,8 +7,8 @@
                                 callback && callback( data );
                         }
                 );
-        }
-
+        };
+        
         $.extend( $.ui, {
                 kladrObjectType: {
                         REGION: 'region',
@@ -18,6 +18,39 @@
                         BUILDING: 'building'
                 }
         });
+        
+        $.kladrCheck = function( options, callback ){
+                var query = {
+                        token: options.token,
+                        key: options.key,
+                        query: options.value,
+                        contentType: options.type,
+                        limit: 1,
+                };
+        
+                if(options.parentId){
+                        switch(options.parentType){
+                                case $.ui.kladrObjectType.REGION:
+                                        query['regionId'] = options.parentId; break;
+                                case $.ui.kladrObjectType.DISTRICT:
+                                        query['districtId'] = options.parentId; break;
+                                case $.ui.kladrObjectType.CITY:
+                                        query['cityId'] = options.parentId; break;
+                                case $.ui.kladrObjectType.STREET:
+                                        query['streetId'] = options.parentId; break;
+                                case $.ui.kladrObjectType.BUILDING:
+                                        query['buildingId'] = options.parentId; break;
+                        }
+                }
+            
+                $.kladrapi(query, function(res){
+                        if(res && res.result.length){
+                               callback && callback(res.result[0]); 
+                        } else {
+                               callback && callback();
+                        }
+                });
+        };
 
         $.widget("primepix.kladr", $.ui.autocomplete, {
                 options: {
