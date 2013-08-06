@@ -2,132 +2,22 @@
 <html>
     <head>
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
-        <title>Пример 1</title>
+        <title>Пример 3</title>
 
         <link href="css/ui-lightness/jquery-ui-1.10.2.custom.css" rel="stylesheet">
-        <link href="css/example1.css" rel="stylesheet">
-        <style type="text/css">
-            .ui-tabs,
-            .ui-tabs .ui-tabs-nav,
-            .ui-state-active a{
-                border: none;
-                background: none;
-            }
-            .ui-tabs{
-                width: 1000px;
-                margin: 30px auto;
-            }
-            .ui-tabs .ui-tabs-panel{
-                background: none;
-                padding: 10px;
-                overflow: auto;
-            }
-            .ui-tabs-nav li{
-                text-align: center;
-                width: 100px;
-                float: left;
-            }
+        <link href="css/examples.css" rel="stylesheet">
+        <link href="css/example3.css" rel="stylesheet">
 
-            /* HTML */
-            .scme-html, .scme-html pre
-            {
-                font-size: small;
-                color: black;
-                font-family: Consolas, "Courier New", Courier, Monospace;
-                background-color: #ffffff;
-            }
-            .scme-html pre { margin: 0em; }
-            .scme-html .rem { color: #008000; }
-            .scme-html .rem2 { color: #696969; }
-            .scme-html .kwrd { color: #0000ff; }
-            .scme-html .str { color: #A31515; }
-            .scme-html .op { color: #0000c0; }
-            .scme-html .preproc { color: #cc6633; }
-            .scme-html .darkblue { color: #00007f; }
-            .scme-html .asp { background-color: #ffff00; }
-            .scme-html .html { color: #800000; }
-            .scme-html .attr { color: #ff0000; }
-            .scme-html .obj { color: #2b91af; }
-            .scme-html .alt
-            {
-                background-color: #f4f4f4;
-                margin: 0em;
-            }
-            .scme-html .lnum { color: #606060; }
-
-            /* CSS */
-            .scme-css, .scme-css pre
-            {
-                font-size: small;
-                color: black;
-                font-family: Consolas, "Courier New", Courier, Monospace;
-                background-color: #ffffff;
-            }
-            .scme-css pre { margin: 0em; }
-            .scme-css .rem { color: #008000; }
-            .scme-css .rem2 { color: #696969; }
-            .scme-css .kwrd { color: #0000ff; }
-            .scme-css .str { color: #A31515; }
-            .scme-css .op { color: #0000c0; }
-            .scme-css .preproc { color: #cc6633; }
-            .scme-css .darkblue { color: #00007f; }
-            .scme-css .asp { background-color: #ffff00; }
-            .scme-css .html { color: #800000; }
-            .scme-css .attr { color: #ff0000; }
-            .scme-css .obj { color: #2b91af; }
-            .scme-css .alt
-            {
-                background-color: #f4f4f4;
-                margin: 0em;
-            }
-            .scme-css .lnum { color: #606060; }
-
-            /* JS */
-            .scme-js, .scme-js pre
-            {
-                    font-size: small;
-                    color: black;
-                    font-family: Consolas, "Courier New", Courier, Monospace;
-                    background-color: #ffffff;
-            }
-            .scme-js pre { margin: 0em; }
-            .scme-js .rem { color: #008000; }
-            .scme-js .rem2 { color: #696969; }
-            .scme-js .kwrd { color: #0000ff; }
-            .scme-js .str { color: #A31515; }
-            .scme-js .op { color: #0000c0; }
-            .scme-js .preproc { color: #cc6633; }
-            .scme-js .darkblue { color: #00007f; }
-            .scme-js .asp { background-color: #ffff00; }
-            .scme-js .html { color: #800000; }
-            .scme-js .attr { color: #ff0000; }
-            .scme-js .obj { color: #2b91af; }
-            .scme-js .alt 
-            {
-                    background-color: #f4f4f4;
-                    margin: 0em;
-            }
-            .scme-js .lnum { color: #606060; }
-        </style>
-
-        <script src="js/jquery-1.9.1.min.js" type="text/javascript"></script>
-        <script src="js/jquery-ui-1.10.2.custom.min.js" type="text/javascript"></script>
-        <script src="js/jquery.primepix.kladr.min.js" type="text/javascript"></script>
-        <script src="js/example1.js" type="text/javascript"></script>
-        <script type="text/javascript">
-            $(function(){
-                $( "#tabs" ).tabs();
-                $( ".ui-tabs .ui-corner-top").click(function(){
-                    $(this).find('.ui-tabs-anchor').trigger('click');
-                    return false;
-                });
-            });
-        </script>
+        <script src="js/lib/jquery-1.9.1.min.js"></script>
+        <script src="js/lib/jquery-ui-1.10.2.custom.min.js"></script>
+        <script src="../jquery.primepix.kladr.min.js"></script>
+        <script src="js/examples.js"></script>
+        <script src="js/example3.js"></script>
     </head>
     <body>
         <div id="tabs">
             <ul>
-                <li><a href="#tabs-1">Result</a></li>
+                <li><a href="#tabs-1">Просмотр</a></li>
                 <li><a href="#tabs-2">HTML</a></li>
                 <li><a href="#tabs-3">CSS</a></li>
                 <li><a href="#tabs-4">JS</a></li>
@@ -145,21 +35,21 @@
                 </div>
             </div>
             <div id="tabs-2">
-                <div class="scme-html">
-                    <a href="html/example1-source.html">Source</a>
+                <div class="scme">
+                    <a href="html/example3-source.html" target="_blank">Source</a>
                     <ol><pre class="alt"><span class="lnum">   1:  </span><span class="kwrd">&lt;!</span><span class="html">DOCTYPE</span> <span class="attr">html</span><span class="kwrd">&gt;</span></pre>
                         <pre><span class="lnum">   2:  </span><span class="kwrd">&lt;</span><span class="html">html</span><span class="kwrd">&gt;</span></pre>
                         <pre class="alt"><span class="lnum">   3:  </span>    <span class="kwrd">&lt;</span><span class="html">head</span><span class="kwrd">&gt;</span></pre>
                         <pre><span class="lnum">   4:  </span>        <span class="kwrd">&lt;</span><span class="html">meta</span> <span class="attr">http-equiv</span><span class="kwrd">="content-type"</span> <span class="attr">content</span><span class="kwrd">="text/html; charset=utf-8"&gt;</span></pre>
-                        <pre class="alt"><span class="lnum">   5:  </span>        <span class="kwrd">&lt;</span><span class="html">title</span><span class="kwrd">&gt;</span>Пример 1<span class="kwrd">&lt;/</span><span class="html">title</span><span class="kwrd">&gt;</span></pre>
+                        <pre class="alt"><span class="lnum">   5:  </span>        <span class="kwrd">&lt;</span><span class="html">title</span><span class="kwrd">&gt;</span>Пример 3<span class="kwrd">&lt;/</span><span class="html">title</span><span class="kwrd">&gt;</span></pre>
                         <pre><span class="lnum">   6:  </span>&nbsp;</pre>
-                        <pre class="alt"><span class="lnum">   7:  </span>        <span class="kwrd">&lt;</span><span class="html">link</span> <span class="attr">href</span><span class="kwrd">="css/ui-lightness/jquery-ui-1.10.2.custom.css"</span> <span class="attr">rel</span><span class="kwrd">="stylesheet"&gt;</span></pre>
-                        <pre><span class="lnum">   8:  </span>        <span class="kwrd">&lt;</span><span class="html">link</span> <span class="attr">href</span><span class="kwrd">="css/example1.css"</span> <span class="attr">rel</span><span class="kwrd">="stylesheet"&gt;</span></pre>
+                        <pre class="alt"><span class="lnum">   7:  </span>        <span class="kwrd">&lt;</span><span class="html">link</span> <span class="attr">href</span><span class="kwrd">="../css/ui-lightness/jquery-ui-1.10.2.custom.css"</span> <span class="attr">rel</span><span class="kwrd">="stylesheet"&gt;</span></pre>
+                        <pre><span class="lnum">   8:  </span>        <span class="kwrd">&lt;</span><span class="html">link</span> <span class="attr">href</span><span class="kwrd">="../css/example3.css"</span> <span class="attr">rel</span><span class="kwrd">="stylesheet"&gt;</span></pre>
                         <pre class="alt"><span class="lnum">   9:  </span>&nbsp;</pre>
-                        <pre><span class="lnum">  10:  </span>        <span class="kwrd">&lt;</span><span class="html">script</span> src=<font color="#A31515">"js/jquery-1.9.1.min.js"</font> type=<font color="#A31515">"text/javascript"</font>&gt;<span class="kwrd">&lt;/</span><span class="html">script</span><span class="kwrd">&gt;</span></pre>
-                        <pre class="alt"><span class="lnum">  11:  </span>        <span class="kwrd">&lt;</span><span class="html">script</span> src=<font color="#A31515">"js/jquery-ui-1.10.2.custom.min.js"</font> type=<font color="#A31515">"text/javascript"</font>&gt;<span class="kwrd">&lt;/</span><span class="html">script</span><span class="kwrd">&gt;</span></pre>
-                        <pre><span class="lnum">  12:  </span>        <span class="kwrd">&lt;</span><span class="html">script</span> src=<font color="#A31515">"js/jquery.primepix.kladr.min.js"</font> type=<font color="#A31515">"text/javascript"</font>&gt;<span class="kwrd">&lt;/</span><span class="html">script</span><span class="kwrd">&gt;</span></pre>
-                        <pre class="alt"><span class="lnum">  13:  </span>        <span class="kwrd">&lt;</span><span class="html">script</span> src=<font color="#A31515">"js/example1.js"</font> type=<font color="#A31515">"text/javascript"</font>&gt;<span class="kwrd">&lt;/</span><span class="html">script</span><span class="kwrd">&gt;</span></pre>
+                        <pre><span class="lnum">  10:  </span>        <span class="kwrd">&lt;</span><span class="html">script</span> src=<font color="#A31515">"../js/lib/jquery-1.9.1.min.js"</font> type=<font color="#A31515">"text/javascript"</font>&gt;<span class="kwrd">&lt;/</span><span class="html">script</span><span class="kwrd">&gt;</span></pre>
+                        <pre class="alt"><span class="lnum">  11:  </span>        <span class="kwrd">&lt;</span><span class="html">script</span> src=<font color="#A31515">"../js/lib/jquery-ui-1.10.2.custom.min.js"</font> type=<font color="#A31515">"text/javascript"</font>&gt;<span class="kwrd">&lt;/</span><span class="html">script</span><span class="kwrd">&gt;</span></pre>
+                        <pre><span class="lnum">  12:  </span>        <span class="kwrd">&lt;</span><span class="html">script</span> src=<font color="#A31515">"../../jquery.primepix.kladr.min.js"</font> type=<font color="#A31515">"text/javascript"</font>&gt;<span class="kwrd">&lt;/</span><span class="html">script</span><span class="kwrd">&gt;</span></pre>
+                        <pre class="alt"><span class="lnum">  13:  </span>        <span class="kwrd">&lt;</span><span class="html">script</span> src=<font color="#A31515">"../js/example3.js"</font> type=<font color="#A31515">"text/javascript"</font>&gt;<span class="kwrd">&lt;/</span><span class="html">script</span><span class="kwrd">&gt;</span></pre>
                         <pre><span class="lnum">  14:  </span>    <span class="kwrd">&lt;/</span><span class="html">head</span><span class="kwrd">&gt;</span></pre>
                         <pre class="alt"><span class="lnum">  15:  </span>    <span class="kwrd">&lt;</span><span class="html">body</span><span class="kwrd">&gt;</span></pre>
                         <pre><span class="lnum">  16:  </span>        <span class="kwrd">&lt;</span><span class="html">div</span> <span class="attr">class</span> <span class="kwrd">="address"&gt;</span></pre>
@@ -174,12 +64,13 @@
                         <pre class="alt"><span class="lnum">  25:  </span>        <span class="kwrd">&lt;/</span><span class="html">div</span><span class="kwrd">&gt;</span></pre>
                         <pre><span class="lnum">  26:  </span>    <span class="kwrd">&lt;/</span><span class="html">body</span><span class="kwrd">&gt;</span></pre>
                         <pre class="alt"><span class="lnum">  27:  </span><span class="kwrd">&lt;/</span><span class="html">html</span><span class="kwrd">&gt;</span></pre>
-                        <pre><span class="lnum">  28:  </span>&nbsp;</pre></ol>
+                        <pre><span class="lnum">  28:  </span>&nbsp;</pre>
+                    </ol>
                 </div>
             </div>
             <div id="tabs-3">
-                <div class="scme-css">
-                    <a href="css/example1.css">Source</a>
+                <div class="scme">
+                    <a href="css/example3.css" target="_blank">Source</a>
                     <ol><pre class="alt"><span class="lnum">   1:  </span><span class="str">.address</span>{</pre>
                         <pre><span class="lnum">   2:  </span>    <span class="attr">width</span>: <span class="kwrd">340px</span>;</pre>
                         <pre class="alt"><span class="lnum">   3:  </span>    <span class="attr">margin</span>: <span class="kwrd">20px auto</span>;</pre>
@@ -198,13 +89,13 @@
                         <pre><span class="lnum">  16:  </span>&nbsp;</pre>
                         <pre class="alt"><span class="lnum">  17:  </span><span class="str">.field input</span>{</pre>
                         <pre><span class="lnum">  18:  </span>    <span class="attr">width</span>: <span class="kwrd">200px</span>;</pre>
-                        <pre class="alt"><span class="lnum">  19:  </span>}</pre>
-                        <pre><span class="lnum">  20:  </span>&nbsp;</pre></ol>
+                        <pre class="alt"><span class="lnum">  19:  </span>} </pre>
+                    </ol>
                 </div>
             </div>
             <div id="tabs-4">
-                <div class="scme-js">
-                    <a href="js/example1.js">Source</a>
+                <div class="scme">
+                    <a href="js/example3.js" target="_blank">Source</a>
                     <ol><pre class="alt"><span class="lnum">   1:  </span>(<span class="kwrd">function</span>($){</pre>
                         <pre><span class="lnum">   2:  </span>    $(<span class="kwrd">function</span>() {</pre>
                         <pre class="alt"><span class="lnum">   3:  </span>        $( <span class="str">'[name="location"]'</span> ).kladr({</pre>

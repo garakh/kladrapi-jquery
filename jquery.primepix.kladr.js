@@ -7,8 +7,8 @@
                                 callback && callback( data );
                         }
                 );
-        }
-
+        };
+        
         $.extend( $.ui, {
                 kladrObjectType: {
                         REGION: 'region',
@@ -18,6 +18,39 @@
                         BUILDING: 'building'
                 }
         });
+        
+        $.kladrCheck = function( options, callback ){
+                var query = {
+                        token: options.token,
+                        key: options.key,
+                        query: options.value,
+                        contentType: options.type,
+                        limit: 1,
+                };
+        
+                if(options.parentId){
+                        switch(options.parentType){
+                                case $.ui.kladrObjectType.REGION:
+                                        query['regionId'] = options.parentId; break;
+                                case $.ui.kladrObjectType.DISTRICT:
+                                        query['districtId'] = options.parentId; break;
+                                case $.ui.kladrObjectType.CITY:
+                                        query['cityId'] = options.parentId; break;
+                                case $.ui.kladrObjectType.STREET:
+                                        query['streetId'] = options.parentId; break;
+                                case $.ui.kladrObjectType.BUILDING:
+                                        query['buildingId'] = options.parentId; break;
+                        }
+                }
+            
+                $.kladrapi(query, function(res){
+                        if(res && res.result.length){
+                               callback && callback(res.result[0]); 
+                        } else {
+                               callback && callback();
+                        }
+                });
+        };
 
         $.widget("primepix.kladr", $.ui.autocomplete, {
                 options: {
@@ -28,17 +61,12 @@
                         parentId: null,
                         withParents: false,
                         minLength: 0,
+                        limit: 50,
                         label: function( obj, query ){
                                 return obj.typeShort + '. ' + obj.name;
                         },
                         value: function( obj, query ){
                                 return obj.name;
-                        },
-                        filter: function( array, term ) {
-                                var matcher = new RegExp( '^'+$.ui.autocomplete.escapeRegex(term), "i" );
-                                return $.grep( array, function( value ) {
-                                        return matcher.test( value.name );
-                                });
                         }
                 },
 
@@ -84,22 +112,14 @@
                 },
 
                 _dataUpdate: function( name, callback ){
+                        if( !this.options.token ) return;
                         if( !this.options.key ) return;
                         if( !name ) return;
-
-                        var length = name.length;
-                        var limit = 1000;
-
-                        switch( length ){
-                                case 1: limit = 50; break;
-                                case 2: limit = 100; break;
-                                case 3: limit = 200; break;
-                                case 4: limit = 400; break;
-                                case 5: limit = 800; break;
-                        }
-
+                        
+                        this.element.trigger('downloadStart');
+                        
                         var kladrObjectType = $.ui.kladrObjectType;
-
+                        
                         var query = {};
                         
                         query.token = this.options.token;
@@ -119,24 +139,12 @@
                         var type = this.options.type ? this.options.type : kladrObjectType.REGION;
                         query.contentType = type;
 
-                        query.limit = limit;
+                        query.limit = this.options.limit;
 
                         var that = this;
                         $.kladrapi( query, function( data ){
-                                that.objects = [];
-                                var objects = data.result;
-                                for( var i in objects ){
-                                       var exist = false;
-                                       for( var j in that.objects ){
-                                                if( that.objects[j].name == objects[i].name ){
-                                                        exist = true;
-                                                        break;
-                                                }
-                                       }
-
-                                       if( exist ) continue;
-                                       that.objects.push(objects[i]);
-                                }
+                                that.objects = data.result;
+                                that.element.trigger('downloadStop');
                                 callback && callback();
                         });
                 },
@@ -145,35 +153,28 @@
                         $.ui.autocomplete.prototype._create.call( this );
 
                         var that = this;
-                        $.ui.autocomplete.filter = this.options.filter;
-
                         this.source = function( request, response ) {
-                                var query = this._key( $.trim( request.term ).toLowerCase() );
+                                var query = this._key( $.trim( request.term ).toLowerCase() );                                
+                                if(!query) response(null);
 
-                                that._dataUpdate( query );
+                                that._dataUpdate( query, function(){
+                                    var result = [];
+                                    for(var i in that.objects){
+                                        result.push({
+                                            label: that.options.label( that.objects[i], query ),
+                                            value: that.options.value( that.objects[i], query ),
+                                            obj: that.objects[i],
+                                        });
+                                    }
 
-                                var result = [];
-                                var objects = $.ui.autocomplete.filter( that.objects, query );
-                                for(var i in objects){
-                                    result.push({
-                                        label: that.options.label( objects[i], query ),
-                                        value: that.options.value( objects[i], query ),
-                                        obj: objects[i],
-                                    });
-                                }
-
-                                response(result);
+                                    response(result);
+                                });
                         };
 
                         this._renderItem = function( ul, item ) {
                                 return $( "<li>" )
                                         .append( $( "<a>" ).html( item.label ) )
                                         .appendTo( ul );
-                        };
-
-                        $.ui.autocomplete.escapeRegex = function( value ) {
-                                var val = value.replace( /[\-\[\]{}()*+?.,\\\^$|#\s]/g, "\\$&" );
-                                return that._key( val ).toLowerCase();
                         };
                 },
 

@@ -43,10 +43,22 @@ label {
 }
 
 .regular__ctrls .ffield {
+    position: relative;
     padding-top: 2px;
     padding-bottom: 11px;
     overflow: hidden;
     width: 100%;
+}
+
+.regular__ctrls .spinner{
+    position: absolute;
+    top: 4px;
+    right: 21px;
+    display: none;
+}
+
+.regular__ctrls .spinner2 {
+    left: 300px;
 }
 
 .regular__ctrls .ffield__lbl {
@@ -91,6 +103,54 @@ label {
 .regular__ctrls input[type="text"].long {
     width: 490px;
 }
+
+
+/* Addition */
+.addition{
+    margin-left: 170px;
+    width: 490px;
+}
+
+.addition .block{
+    display: block;
+    height: 150px;
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background-color: rgba(0, 0, 0, 0.06);
+}
+
+.addition .block:nth-child(1){
+    float: left;
+    width: 200px;
+}
+
+.addition .block:nth-child(2){
+    float: right;
+    width: 240px;
+}
+
+.addition p{
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+}
+
+.addition .title{
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.addition ul{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.addition .name{
+    font-style: italic;
+}
+
 
 /* Custom Autocomplete */
 .ui-autocomplete {
