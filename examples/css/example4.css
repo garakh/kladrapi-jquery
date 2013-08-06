@@ -113,10 +113,12 @@ label {
 
 .addition .block{
     display: block;
-    height: 130px;
+    height: 150px;
     padding: 10px;
-    background-color: rgba(0, 0, 0, 0.06);
+    font-size: 15px;
     border-radius: 10px;
+    margin-bottom: 20px;
+    background-color: rgba(0, 0, 0, 0.06);
 }
 
 .addition .block:nth-child(1){
