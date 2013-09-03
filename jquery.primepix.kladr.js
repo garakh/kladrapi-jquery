@@ -28,9 +28,9 @@
                         limit: 1,
                 };
         
-                if( this.options.parentId ){
-                        var parent = ( this.options.parentType ? this.options.parentType : $.ui.kladrObjectType.REGION )+'Id';
-                        query[parent] = this.options.parentId;
+                if( options.parentId ){
+                        var parent = ( options.parentType ? options.parentType : $.ui.kladrObjectType.REGION )+'Id';
+                        query[parent] = options.parentId;
                 }
             
                 $.kladrapi(query, function(res){
