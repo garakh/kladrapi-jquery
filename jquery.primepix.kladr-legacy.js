@@ -28,19 +28,9 @@
                         limit: 1,
                 };
         
-                if(options.parentId){
-                        switch(options.parentType){
-                                case $.ui.kladrObjectType.REGION:
-                                        query['regionId'] = options.parentId; break;
-                                case $.ui.kladrObjectType.DISTRICT:
-                                        query['districtId'] = options.parentId; break;
-                                case $.ui.kladrObjectType.CITY:
-                                        query['cityId'] = options.parentId; break;
-                                case $.ui.kladrObjectType.STREET:
-                                        query['streetId'] = options.parentId; break;
-                                case $.ui.kladrObjectType.BUILDING:
-                                        query['buildingId'] = options.parentId; break;
-                        }
+                if( this.options.parentId ){
+                        var parent = ( this.options.parentType ? this.options.parentType : $.ui.kladrObjectType.REGION )+'Id';
+                        query[parent] = this.options.parentId;
                 }
             
                 $.kladrapi(query, function(res){
