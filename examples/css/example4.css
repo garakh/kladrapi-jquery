@@ -57,10 +57,6 @@ label {
     display: none;
 }
 
-.regular__ctrls .spinner2 {
-    left: 300px;
-}
-
 .regular__ctrls .ffield__lbl {
     display: block;
     width: 150px;

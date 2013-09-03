@@ -28,24 +28,14 @@
                         limit: 1,
                 };
         
-                if(options.parentId){
-                        switch(options.parentType){
-                                case $.ui.kladrObjectType.REGION:
-                                        query['regionId'] = options.parentId; break;
-                                case $.ui.kladrObjectType.DISTRICT:
-                                        query['districtId'] = options.parentId; break;
-                                case $.ui.kladrObjectType.CITY:
-                                        query['cityId'] = options.parentId; break;
-                                case $.ui.kladrObjectType.STREET:
-                                        query['streetId'] = options.parentId; break;
-                                case $.ui.kladrObjectType.BUILDING:
-                                        query['buildingId'] = options.parentId; break;
-                        }
+                if( options.parentId ){
+                        var parent = ( options.parentType ? options.parentType : $.ui.kladrObjectType.REGION )+'Id';
+                        query[parent] = options.parentId;
                 }
             
                 $.kladrapi(query, function(res){
                         if(res && res.result.length){
-                               callback && callback(res.result[0]);
+                               callback && callback(res.result[0]); 
                         } else {
                                callback && callback();
                         }
