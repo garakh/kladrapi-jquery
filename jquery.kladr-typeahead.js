@@ -1,3 +1,15 @@
+/* =============================================================
+* jquery.kladr-typeahead.js v 2014-09-04
+*
+* A jQuery-plugin for Twitter Bootstrap 2 to deal with
+* KLADR autocomplete (typeahead)
+* https://github.com/garakh/kladrapi-jquery
+* =============================================================
+* Copyright 2013 Alexander Toporkov 
+* https://github.com/toporchillo
+*
+* Licensed: Public Domain
+* ============================================================ */
 (function($) {    
     $.kladrapi = function( options, callback ){
         var kladrapi = 'http://kladr-api.ru/api.php';
@@ -128,14 +140,6 @@
                             data.push(item);
                         });
                         return process(data);
-                        /*
-                        var data = [];
-                        $.each(response.result, function(i, item) {
-                            data.push(item.name);
-                            suggestions[item.name] = item;
-                        })
-                        return process(data);
-                        */
                     });
                 },            
                 highlighter: function(obj) {
