@@ -15,18 +15,23 @@
         // Формирует подписи в autocomplete
         var Label = function( obj, query ){
             var label = '';
+            
+            var name = obj.name.toLowerCase();
+            query = query.toLowerCase();
+            
+            var start = name.indexOf(query);
+            start = start > 0 ? start : 0;
 
-            if(obj.name){
-                if(obj.typeShort){
-                    label += '<span class="ac-s2">' + obj.typeShort + '. ' + '</span>';
-                }
+            if(obj.typeShort){
+                label += '<span class="ac-s2">' + obj.typeShort + '. ' + '</span>';
+            }
 
-                if(query.length < obj.name.length){
-                    label += '<span class="ac-s">' + obj.name.substr(0, query.length) + '</span>';
-                    label += '<span class="ac-s2">' + obj.name.substr(query.length, obj.name.length - query.length) + '</span>';
-                } else {
-                    label += '<span class="ac-s">' + obj.name + '</span>';
-                }
+            if(query.length < obj.name.length){
+                label += '<span class="ac-s2">' + obj.name.substr(0, start) + '</span>';
+                label += '<span class="ac-s">' + obj.name.substr(start, query.length) + '</span>';
+                label += '<span class="ac-s2">' + obj.name.substr(start+query.length, obj.name.length-query.length-start) + '</span>';
+            } else {
+                label += '<span class="ac-s">' + obj.name + '</span>';
             }
 
             if(obj.parents){
